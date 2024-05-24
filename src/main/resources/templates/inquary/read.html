@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 여기서 따올건 왠만큼 따와서 사용 했음 혹시몰라서 냄겨둠-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link th:inline="css" th:href="@{/css/board/read.css}" rel="stylesheet"/>
+</head>
+<body id="board_container">
+<div class="read_wrap">
+    <table class="board_content" cellspacing="0">
+        <colgroup>
+            <col width="20">
+            <col width="20">
+            <col width="40">
+            <col width="200">
+            <col width="40">
+            <col width="60">
+            <col width="40">
+            <col width="70">
+        </colgroup>
+        <tr>
+            <th>No.</th>
+            <td th:text="${dto.inquaryNo}" id="inquaryNo" name="inquaryNo"  class="read_td"></td>
+            <th>제목</th>
+            <td th:text="${dto.title}" id="title" name="title" class="read_td"></td>
+            <th>작성자</th>
+            <td th:text="${dto.memberName}" id="member" name="member" class="read_td"></td>
+            <th>작성일</th>
+            <td th:if="${dto.modDate == null}" th:text="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}" id="regDate" name="regDate" class="read_td"></td>
+            <td th:if="${dto.modDate != null}" th:text="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}" id="modDate" name="modDate" class="read_td"></td>
+        </tr>
+        <tr>
+            <td colspan="8" class="read_td read_content">[[${dto.content}]]</td>
+        </tr>
+    </table>
+    <a th:if="${dto.userId eq #authentication.name}" th:href="@{/inquary/modify(inquaryNo=${dto.inquaryNo}, page=${pageRequestDTO2.page}, type=${pageRequestDTO2.type}, keyword=${pageRequestDTO2.keyword})}">
+        <button type="button" class="option_button">수정</button>
+    </a>
+    <a th:if="${dto.userId eq #authentication.name}" th:href="@{/inquary/remove(inquaryNo=${dto.inquaryNo})}">
+        <button type="button" class="option_button">삭제</button>
+    </a>
+    <a th:href="@{/inquary/list}">
+        <button type="button" class="option_button">목록</button>
+    </a>
+    <div class="reply_wrap">
+        <button class="addReply reply_button" sec:authorize="hasRole('ADMIN')||hasRole('SUPERADMIN')">댓글 달기</button>
+        <button class="replyCount reply_button" > 리스트 [[${dto.replyCount}]]</button>
+    </div>
+
+
+    <div class="list-group replyList">
+
+    </div>
+</div>
+
+
+<!--댓글 입력 폼-->
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">댓글 달기</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input class="form-control"  type="text" name="replyText" placeholder="내용을 입력해주세요">
+                </div>
+                <div class="form-group">
+                    <input class="form-control"  type="text" name="replyer" placeholder="이름을 입력해주세요">
+                    <input type="hidden" name="replyNo">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="regi_button replySave">등록</button>
+                <button type="button" class="close_button" data-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    $(document).ready(function() {
+        var inquaryNo = [[${dto.inquaryNo}]];
+        var listGroup = $(".replyList");
+        var modal = $('.modal');
+
+        $(".replyCount").click(loadJSONData);
+
+        $(".addReply").click(function () {
+            $(".modal-footer .btn").hide();
+            $(".replySave, .replyClose").show();
+            modal.modal('show').find('input[name="replyText"], input[name="replyer"]').val('');
+        });
+
+        $(".replySave").click(function() {
+            var reply = {
+                inquaryNo: inquaryNo,
+                content: $('input[name="replyText"]').val(),
+                replyer: $('input[name="replyer"]').val()
+            };
+
+            $.ajax({
+                url: '/replies',
+                method: 'post',
+                data: JSON.stringify(reply),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function(data) {
+                    alert("댓글이 등록되었습니다.");
+                    modal.modal('hide');
+                    loadJSONData();
+                }
+            });
+        });
+
+        $('.replyList').on("click", ".card-body", function(){
+            $("input[name='replyText']").val($(this).find('.card-title').html());
+            $("input[name='replyer']").val($(this).find('.card-subtitle').html());
+            $(".modal-footer .btn").hide();
+            $(".replyRemove, .replyModify, .replyClose").show();
+            modal.modal('show');
+        });
+
+
+        function loadJSONData() {
+            $.getJSON('/replies/inquary/' + inquaryNo, function(arr){
+                var str = "";
+                $('.replyCount').html("댓글 수 " + arr.length);
+                $.each(arr, function(idx, reply){
+                    str += '    <p class="card-title">' + reply.content + '</p>';
+                    str += '    <p class="card-subtitle mb-2 text-muted">작성자 : ' + reply.replyer + '</p>';
+                    // str += '    <p>' + formatTime(reply.regDate, 'yyyy/MM/dd HH:mm:ss') + '</p>';
+
+                    str += '    <br><hr></div>';
+                });
+                listGroup.html(str);
+            });
+        }
+        //
+        // function formatTime(str){
+        //     var date = new Date(str);
+        //     return date.getFullYear() + '/' +
+        //         (date.getMonth() + 1) + '/' +
+        //         date.getDate() + ' ' +
+        //         date.getHours() + ':' +
+        //         date.getMinutes();
+        // }
+    });
+</script>
+</body>
+</html>

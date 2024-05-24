@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      th:fragment="FooterFragment">
+<head>
+    <meta charset="UTF-8">
+    <link th:inline="css" th:href="@{/css/include/footer.css}" rel="stylesheet"/>
+
+</head>
+<body>
+<footer id="footer">
+    <div id="footer_wrap">
+        <div class="link">
+            <ul class="link_list">
+                <li class="link_item"><a th:href="@{/privacyterms}" target="_blank">개인정보처리방침</a></li>
+                <li class="link_item"><a th:href="@{/policyterms}" target="_blank">이용약관</a></li>
+                <li class="link_item"><a th:href="@{/copyrightterms}" target="_blank">저작권정책</a></li>
+                <li class="link_item"><a th:href="@{/reviewterms}" target="_blank">리뷰운영정책</a></li>
+            </ul>
+        </div>
+        <div class="footer_content">
+            <div class="sb_info">
+                <p>(00000)샌드박스시 샌드구 박스로 999 / 샌드박스 콜센터 : 5656-5656</p>
+                <p>ⓒ SEND-BOX, ALL RIGHTS RESERVED.</p>
+            </div>
+            <div class="footer_logo">
+                <div class="side_logo"><img th:src="@{/image/logo_orange_Removal.png}" alt="logo"></div>
+            </div>
+        </div>
+    </div><!-- footer_wrap -->
+</footer>
+</body>
+</html>

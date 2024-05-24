@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <link rel="stylesheet" th:href="@{/css/user/list.css}"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script> <!--임포트: jquery를 js에서 사용하기 위해서 -->
+    <script type="text/javascript" th:src="@{/js/user/cartList.js}"></script>
+
+
+    <link rel="stylesheet" href="../../../static/css/user/list.css">
+</head>
+<body>
+<!-- Navigation: 네브바-->
+<div th:replace="~{user/include/nav :: NavFragment}"></div>
+<div id=container>
+    <form id="form1">
+        <input type="hidden" id="page" name="page" value="1"> <!--page 값 넘기기-->
+        <h1 class="visual_title">장바구니</h1>
+        <button type = "button" th:onclick="|javascript:deleteAllCart()|" class="clear_button">전체 삭제</button>
+        <!--이 부분을 cartListAjax.html과 연결해서 여기에 해당 파일이 삽입!-->
+        <div id="cartListForm">
+        </div>
+    </form>
+</div>
+</body>
+</html>

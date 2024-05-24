@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin modify account</title>
+    <link rel="stylesheet" th:href="@{/css/admin/list.css}"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script> <!--임포트: jquery를 js에서 사용하기 위해서 -->
+    <script type="text/javascript" th:src="@{/js/admin/storeList.js}"></script>
+</head>
+
+<body>
+<!-- Navigation: 네브바-->
+<div th:replace="~{admin/include/nav :: NavFragment}"></div>
+<div id=container>
+    <form id="form1">
+        <input type="hidden" id="page" name="page" value="1"> <!--page 값 넘기기-->
+        <h1 class="visual_title">업체관리</h1>
+        <!--이 부분을 ownerListAjax.html과 연결해서 여기에 해당 파일이 삽입!-->
+        <div id="storeListForm">
+        </div>
+    </form>
+</div>
+</body>
+</html>

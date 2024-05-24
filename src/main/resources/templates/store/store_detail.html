@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    <link rel="stylesheet" href="../../static/css/store/storeDetail.css">-->
+    <link th:inline="css" th:href="@{/css/store/storeDetail.css}" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script> <!--임포트: jquery를 js에서 사용하기 위해서 -->
+    <script type="text/javascript" th:src="@{/js/store/storeDetail.js}"></script>
+</head>
+<body>
+<div id="container" class="store_container">
+    <div class="store_name">
+        <p th:text="${store.storeName}">가게이름</p>
+    </div>
+    <div class="detail_col1">
+        <div class="detail_row1">
+            <div class="thumbnail">
+                <img th:src="@{'/upload/'+${store.thumbnail}}" alt="썸네일">
+            </div>
+<!--            <div class="review">-->
+<!--                &lt;!&ndash;                    <p th:each="review : ${store.review}" th:text="${review.content}">리뷰입니다</p>&ndash;&gt;-->
+<!--            </div>-->
+        </div> <!-- detail_row1 -->
+        <div class="detail_row2">
+            <div class="order_tap">
+                <form th:action="@{/user/addCart}" th:method="post" id="order_form">
+                    <input type="hidden" id="roomNo" name="roomNo" value="">
+                    <input type="hidden" id="onePrice" name="onePrice" value="">
+                    <input type="hidden" id="storeName" name="storeName" th:value="${store.storeName}">
+                    <input type="hidden" id="storeNo" name="storeNo" th:value="${store.storeNo}">
+                    <div class="form_list">
+                        <div class="form_item">
+                            <label for="startDate">시작날짜</label>
+                            <input type="date" id="startDate" name="startDate" onchange="updateTotalPrice()">
+                        </div>
+                        <div class="form_item">
+                            <label for="endDate">종료날짜</label>
+                            <input type="date" id="endDate" name="endDate" onchange="updateTotalPrice()">
+                        </div>
+                        <div class="form_item">
+                            <label for="sizeType">사이즈</label>
+                            <select id="sizeType" onchange="updateTotalPrice()">
+                                <th:block th:each="room : ${store.rooms}">
+                                    <option th:value="${room.roomNo}+','+${room.price}" th:text="${room.size}" th:selected="s == ${room.size}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="form_item">
+                            <label for="totalAmount">수량</label>
+                            <input type="number" id="totalAmount" name="totalAmount" onchange="updateTotalPrice()">
+                        </div>
+                        <hr>
+                        <div class="form_item">
+                            <label for="totalPrice">총가격</label>
+                            <div class=" total_price">
+                                <input type="number" id="totalPrice" name="totalPrice" readonly>
+                                <span>원</span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="buttons_wrap">
+                        <button class="detail_button" type="button" onclick="addCart()">장바구니 담기</button>
+                        <button class="kakaoBt" type="button" onclick="paymentGo()">카카오페이 결제</button>
+                    </div>
+                </form>
+            </div> <!-- order_tap -->
+        </div> <!-- detail_row2 -->
+    </div> <!-- detail_col1 -->
+    <hr>
+
+    <div class="detail_col2">
+        <div class="visual_title">
+            <p>상세페이지</p>
+        </div>
+        <div class="detail_img">
+            <img th:src="@{'/upload/'+${store.infoPhoto}}" alt="상세이미지">
+        </div>
+    </div> <!-- detail_col2 -->
+    <hr>
+    <div class="detail_col3">
+        <div class="detail_info">
+            <div class="detail_notice">
+                <h2>공지사항</h2>
+                <p th:text="${store.notice}">가게공지</p><br><br>
+                <span>전화번호 : </span> <span th:text="${store.phone}">전화번호</span><br>
+                <span>주소 : </span><span th:text="${store.address}">주소</span>
+            </div>
+            <div class="detail_address">
+                <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.853894005759!2d127.02962611516321!3d37.49791553900647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca3ab98b97e57%3A0xf42a01c1fef1a158!2z6rK067Cx7ISc7Jq47Y%2Bc!5e0!3m2!1sko!2skr!4v1683955200000!5m2!1sko!2skr" width="280px" height="230px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+            </div>
+        </div> <!-- detail_info -->
+    </div> <!-- detail_col3 -->
+
+</div> <!-- container -->
+</body>
+</html>

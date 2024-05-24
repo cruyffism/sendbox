@@ -1,0 +1,83 @@
+<!--아작스를 통해 보여줄 화면 -->
+<table class="board_content" cellspacing="0">
+    <caption>업체 관리</caption>
+    <colgroup>
+        <col width="15%">
+        <col width="15%">
+        <col width="15%">
+        <col width="20%">
+        <col width="20%">
+        <col width="15%">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>매장명</th>
+        <th>대표자</th>
+        <th>지역</th>
+        <th>주소</th>
+        <th>전화번호</th>
+        <th>사업자등록번호</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:if="${storeList.totalElements != 0}">
+        <tr th:each="store: ${storeList}">
+            <td th:text="${store.storeName}"></td>
+            <td th:text="${store.ownerMember.name}"></td>
+            <td th:text="${store.region}"></td>
+            <td th:text="${store.address}"></td>
+            <td th:text="${store.phone}"></td>
+            <td th:text="${store.brn}"></td>
+        </tr>
+    </th:block>
+    <th:block th:if="${storeList.totalElements == 0}">
+        <tr style="text-align: center">
+            <td colspan="6">업체 명단이 없습니다.</td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+
+<div class="buttons_wrap">
+    <tr class="pagination"
+        th:with="start=${(storeList.number div 10)*10 + 1},
+           last=${(start + 9 < storeList.totalPages ? start + 9 : storeList.totalPages)}">
+        <td>
+            <a th:onclick="|javascript:storeListAjax(1)|" aria-label="First">
+                <span aria-hidden="true">첫 페이지</span>
+            </a>
+        </td>
+
+        <td th:class="${storeList.first} ? 'disabled'">
+            <a th:onclick="${storeList.first} ? '' : 'javascript:storeListAjax('+${storeList.number}+')'"
+               aria-label="Previous">
+                <span aria-hidden="true">&lt;</span>
+            </a>
+        </td>
+
+        <th:block th:if="${last != 0}">
+            <td th:each="page: ${#numbers.sequence(start, last)}"
+                th:class="${page == storeList.number + 1} ? 'active'">
+                <a th:text="${page}" th:onclick="|javascript:storeListAjax(${page})|"></a>
+            </td>
+        </th:block>
+        <th:block th:if="${last == 0}">
+            <td class="active">
+                <a th:text="1" th:onclick="|javascript:storeListAjax(1)|"></a>
+            </td>
+        </th:block>
+
+        <td th:class="${storeList.last} ? 'disabled'">
+            <a th:onclick="${storeList.last} ? '' : 'javascript:storeListAjax('+${storeList.number+2}+')'"
+               aria-label="Next">
+                <span aria-hidden="true">&gt;</span>
+            </a>
+        </td>
+
+        <td>
+            <a th:onclick="|javascript:storeListAjax(${storeList.totalPages})|" aria-label="Last">
+                <span aria-hidden="true">마지막 페이지</span>
+            </a>
+        </td>
+    </tr>
+</div>

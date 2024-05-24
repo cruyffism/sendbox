@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../static/css/include/privacyterms.css">
+    <link th:inline="css" th:href="@{/css/include/privacyterms.css}" rel="stylesheet"/>
+</head>
+<body>
+<div id="container sub_container">
+    <div class="sub_wrap">
+        <div class="notice_title">
+            <h1>개인정보 처리 방침</h1>
+        </div>
+        <div class="sub-group1">
+            <h3 class="subtitle">이용자 및 법정대리인의 권리, 의무 및 행사방법</h3>
+            <h4 class="subtitle2">('24.04.22 기준)</h4>
+            <p class="sub_comment">이용자는 언제든지 등록되어 있는 자신의 개인정보를 조회하거나 수정할 수 있으며 정보 삭제 및 처리 정리를 요구할 수도 있습니다. 다만, 그러한 경우 서비스의 일부 또는 전부 이용이 어려울 수 있습니다. 이용자의 개인정보에 대한 조회, 수정 또는 가입해지 등의 문의에 대한 원활한 의사소통을 위해 고객행복센터를 운영하고 있으며, 다음의 연락처를 통해 문의하시면 지체없이 조치하겠습니다. </p>
+            <div class="sub-table-wrap">
+                <table class="sub-table">
+                    <thead class="multi">
+                    <tr>
+                        <th>구분</th>
+                        <th>전화</th>
+                        <th>이메일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>고객행복센터</td>
+                        <td>5656-5656</td>
+                        <td>sendbox@sendbox.com</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p class="sub_comment">회사는 법정대리인의 동의가 필요한 만 14세 미만 아동의 개인정보는 원칙적으로 수집하지 않습니다. 예외적으로 만 14세 미만 아동의 개인정도를 수집해야 하는 경우가 있다면 법정대리인의 법령 상의 권리를 보장합니다. (아동의 개인정보에 대한 열람, 정정·삭제, 개인정보 처리 정지요구권).</p>
+            </div><br><br>
+            <h3 class="subtitle">개인정보 보호책임자 및 담당부서</h3>
+            <h4 class="subtitle2">('24.04.22 기준)</h4>
+            <p class="sub_comment">이용자의 개인정보를 처리하는 책임자 및 담당자는 다음과 같으며, 회사는 이용자의 문의에 대해 신속하고 충분한 답변을 드릴 수 있도록 최선을 다하겠습니다.</p>
+            <div class="sub-table-wrap">
+                <table class="sub-table">
+                    <colgroup>
+                        <col width="50%">
+                        <col width="50%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>개인정보 보호책임자</th>
+                        <th>개인정보 보호담당자</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>이름 : 이유리 <br> 소속 : 사이버보안센터 <br> 전화 : 5656-5656<br> 메일 : sendbox@sendbox.com</td>
+                        <td>이름 : 이해준 <br> 소속 : 개인정보보호팀 / 팀장 <br> 5656-5656 <br> 메일 : sendbox@sendbox.com</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p class="sub_comment">▸개인정보가 침해되어 이에 대한 신고나 보다 자세한 상담이 필요한 경우에는 회사와는 별도인 다음의 전문기관에 문의하셔서 도움을 받으실 수 있습니다.</p>
+                <table class="sub-table">
+                    <thead class="multi">
+                    <tr>
+                        <th>권익침해 신고 및 상담기관</th>
+                        <th>전화</th>
+                        <th>사이트</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>개인정보 침해신고센터</td>
+                        <td>(국번없이) 118</td>
+                        <td>privacy.kisa.co.kr</td>
+                    </tr>
+                    <tr>
+                        <td>개인정보 분쟁조정위원회</td>
+                        <td>(국번없이) 1833-6972</td>
+                        <td>www.kopico.go.kr</td>
+                    <tr>
+                        <td>대검찰정 사이버수사과</td>
+                        <td>(국번없이) 1301</td>
+                        <td>www.spo.go.kr</td>
+                    </tr>
+                    <tr>
+                        <td>경찰청 사이버 수사국</td>
+                        <td>(국번없이) 182</td>
+                        <td>www.spo.go.kr</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><br><br>
+            <h3 class="subtitle">개인정보의 자동수집 장치 설치·운영·거부 사항</h3>
+            <h4 class="subtitle2">('24.04.22 기준)</h4>
+            <p class="sub_comment"> 회사는 이용자에게 개별적인 맞춤서비스를 제공하기 위하여 이용정보를 저장하고 수시로 불러오는 쿠키(cookie)를 사용합니다. <br><br>
+            쿠키는 웹사이트를 운영하는데 이용되는 서버가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다.<br><br>
+            1. 쿠키 사용 목적<br> 이용자가 방문한 각 서비스와 웹 사이트들에 대한 방문 및 이용형태, 보안 접속 여부 등을 파악하여 이용자에게 최적화된 정보를 제공하기 위하여 사용합니다. <br><br>
+            2. 쿠키의 설치·운영 및 거부<br> 웹 브라우저 상단의 도구>인터넷 옵션 >개인정보 메뉴의 옵션 설정을 통해 쿠키 저장을 거부할 수 있습니다. 단, 쿠키 저장을 거부하시면 로그인이 필요한 일부 서비스 이용에 어려움이 있을 수 있습니다.
+            </p>
+            <br><br>
+            <h3 class="subtitle">개인정보의 제3자 제공</h3>
+            <h4 class="subtitle2">('24.04.22 기준)</h4>
+            <p class="sub_comment"> 회사는 이용자의 개인정보를 개인정보의 처리 목적에서 명시한 범위 내에서만 처리하며, 이용자의 동의, 법률의 특별한 규정 등에 해당하는 경우에만 개인정보를 제3자에게 제공하고 그 이외에는 이용자의 개인정보를 제3자에게 제공하지 않습니다. <br><br>
+            회사는 원활한 서비스 제공을 위하여 다음의 경우 이용자의 동의를 얻어 개인정보를 제공하고 있습니다. <br><br>
+            1. 다른 법률에 특별한 규정이 있는 경우<br> 2. 명백히 정보주체 또는 제3자의 급박한 생명, 신체, 재산의 이익을 위하여 필요하다고 인정되는 경우<br> 3. 공중위생 등 공공의 안전과 안녕을 위하여 긴급히 필요한 경우</p><br><br>
+            <h3 class="subtitle">개인정보의 파기</h3>
+            <h4 class="subtitle2">('24.04.22 기준)</h4>
+            <p class="sub_comment">회사는 수집 및 이용목적이 달성된 개인정보는 지체없이 파기합니다. <br><br> 정보주체로부터 동의받은 개인정보 보유기간이 겨오가하거나 처리목적이 달성되었음에도 불구하고 내부 방침 또는 다른 법령에 따라 개인정보를 계속 보존하여야 하는 경우에는 해당 개인정보를 별도의 데이터베이스(DB)로 옮기거나 보관장소를 달리하여 보존합니다. <br><br>
+            1. 개인정보의 파기 절차와 방법<br> 회사는 이용자의 서비스 해지 등의 요청이 있는 경우 지체없이 파기하며, 관계법령 및 내부 방침에 의해 보유한 경우에도 해당 사유 종료 후 지체없이 파기합니다. <br>
+            2. 파기방법<br> 회사는 전자적 파일 형태로 기록·저장된 개인정보는 기록을 재생할 수 없도록 파기하며, 종이 문서에 기록·저장된 개인정보는 분쇄기로 분쇄하거나 소각하여 파기합니다. <br>
+            3. 내부 방침에 따라 보유하는 경우</p><br>
+            <div class="sub-table-wrap">
+                <table class="sub-table">
+                    <colgroup>
+                        <col width="50%">
+                        <col width="50%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>보유 사유</th>
+                        <th>보유 기간</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>회사와 이용자간 민원, 소송 등 분쟁 과정 중 법률로 정한 보유기간이 경과한 경우</td>
+                        <td>분쟁 해결 시까지 보관 후 파기</td>
+                    </tr>
+                    <tr>
+                        <td>회사가 개별적으로 이용자의 동의를 받은 경우</td>
+                        <td>동의 받은 기간까지 보관 후 파기</td>
+                    </tr>
+                    <tr>
+                        <td>정산이 남아 있는 경우</td>
+                        <td>정산 종료 시까지 보관 후 파기</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br><br>
+            </div>
+            <p class="sub_comment">4. 관계 법령에 따라 보유하는 경우 </p>
+            <div class="sub-table-wrap">
+                <table class="sub-table">
+                    <colgroup>
+                        <col width="33%">
+                        <col width="33%">
+                        <col width="33%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>보유 정보</th>
+                        <th>보유 근거</th>
+                        <th>보유 기간</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>계약 또는 청약 철회에 관한 기록</td>
+                        <td>전자상거래 등에서의 소비자 보호에 관한 법률</td>
+                        <td>5년</td>
+                    </tr>
+                    <tr>
+                        <td>대금 결제 및 재화 등의 공급에 관한 기록</td>
+                        <td>전자상거래 등에서의 소비자 보호에 관한 법률, 국세기본법, 법인세법, 부가가치세법</td>
+                        <td>5년</td>
+                    </tr>
+                    <tr>
+                        <td>소비자의 불만 또는 분쟁처리에 관한 기록</td>
+                        <td>전자상거래 등에서의 소비자 보호에 관한 법률</td>
+                        <td>3년</td>
+                    </tr>
+                    <tr>
+                        <td>표시/광고에 관한 기록</td>
+                        <td>전자상거래 등에서의 소비자 보호에 관한 법률</td>
+                        <td>6개월</td>
+                    </tr>
+                    <tr>
+                        <td>본인 확인에 관한 기록</td>
+                        <td>정보통신망 이용촉진 및 정보보호에 관한 법률</td>
+                        <td>6개월</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br><br>
+            </div>
+            <h3 class="subtitle">개인정보의 처리위탁</h3>
+            <h4 class="subtitle2">('24.04.22 기준)</h4>
+            <p class="sub_comment">회사는 원활한 개인정보 업무처리를 위하여 다음과 같이 개인정보 처리업무를 위탁하고 있습니다. </p>
+            <div class="sub-table-wrap">
+                <table class="sub-table">
+                    <colgroup>
+                        <col width="33%">
+                        <col width="33%">
+                        <col width="33%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>수탁자</th>
+                        <th>위탁업무</th>
+                        <th>개인정보 보유 및 이용기간</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Amazon Web Services, Inc.</td>
+                        <td>클라우드 인프라 관리</td>
+                        <td rowspan="3">회원탈퇴시 또는 위탁 계약 종료시까지</td>
+                    </tr>
+                    <tr>
+                        <td>(주)샌드박스</td>
+                        <td>고객센터 민원 상담업무</td>
+                    </tr>
+                    <tr>
+                        <td>(주)카카오페이먼트센터</td>
+                        <td> 결제 서비스 제공</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="sub_comment">회사는 데이터 보관 및 인프라 관리 업무를 국외법인인 'Amazon Web Services, Inc.'에 다음과 같이 위탁하고 있습니다. </p>
+            <div class="sub-table-wrap">
+                <table class="sub-table">
+                    <colgroup>
+                        <col width="50%">
+                        <col width="50%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>수탁업체</th>
+                        <td>Amazon Web Services, Inc.</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>수탁업체의 위치</th>
+                        <td>Amazon Web Services, Inc. 의 리전(한국, 미국, 일본, 런던 등)</td>
+                    </tr>
+                    <tr>
+                        <th>위탁 일시 및 방법</th>
+                        <td>서비스 이용 시점에 네트워크를 통한 전송</td>
+                    </tr>
+                    <tr>
+                        <th>정보관리책임자 연락처</th>
+                        <td>aws-korea-privacy@amazon.com</td>
+                    </tr>
+                    <tr>
+                        <th>위탁하는 개인정보 항목</th>
+                        <td>회사에서 수집, 보관하는 개인정보를 포함하는 데이터 일체</td>
+                    </tr>
+                    <tr>
+                        <th>위탁업무 내용</th>
+                        <td>재난, 재해 등으로부터 안전한 이용자 데이터 보호를 위한 국가간 데이터 백업(보관)</td>
+                    </tr>
+                    <tr>
+                        <th>개인정보의 보유 및 이용기간</th>
+                        <td>본 개인정보처리방침에 규정된 보관기간과 일치함</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p class="sub_comment"> 개인정보의 이전을 거부하는 방법, 절차 및 거부의 효과: 정부주체는 샌드박스컴퍼니의 개인정보 담당부서에 연락하여 개인정보의 국외이전을 거부할 수 있습니다. 단, 개인정보 국외이전을 거부하실 경우 여기어때 서비스 이용에 제한이 발생할 수 있습니다. <br>
+                회사는 위탁계약 체결 시 위탁업무 수행목적 외 개인정보 처리금지, 기술적·관리적 보호조치, 재위탁 제한, 수탁자에 대한 관리·감독, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감동하고 있습니다. <br>
+                위탁업무의 내용이나 수탁자가 변경될 경우에는 지체없이 본 개인정보 처리방침을 통하여 공개하도록 하겠습니다. </p>
+            </div><br><br>
+            <h3 class="subtitle">개인정보 처리방침의 변경</h3>
+            <h4 class="subtitle2">('24.04.22 기준)</h4>
+            <p class="sub_comment">회사는 회사의 정책 또는 관계 법령의 변경에 따라 본 개인정보를 처리방침을 변경할 수 있습니다. </p>
+            <br><br>
+        </div>
+    </div>
+</div>
+</body>
+</html>

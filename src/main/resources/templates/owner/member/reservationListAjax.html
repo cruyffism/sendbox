@@ -1,0 +1,98 @@
+<!--아작스를 통해 보여줄 화면 -->
+<table class="board_content" cellspacing="0">
+    <caption>예약 관리</caption>
+    <colgroup>
+        <col width="10%">
+        <col width="10%">
+        <col width="15%">
+        <col width="15%">
+        <col width="15%">
+        <col width="15%">
+        <col width="10%">
+        <col width="10%">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>예약자명</th>
+        <th>예약 번호</th>
+        <th>이메일</th>
+        <th>전화번호</th>
+        <th>사용 시작일</th>
+        <th>사용 종료일</th>
+        <th>현황</th>
+        <th>거절</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:if="${reservations.totalElements != 0}">
+        <tr th:each="reservation: ${reservations}">
+            <td th:text="${reservation.userMember.name}"></td>
+            <td th:text="${reservation.reservationNum}"></td>
+            <td th:text="${reservation.userMember.mail}"></td>
+            <td th:text="${reservation.userMember.phone}"></td>
+            <td th:text="${reservation.startDate}"></td>
+            <td th:text="${reservation.endDate}"></td>
+            <td th:text="${reservation.reservationStatus}"></td>
+            <th:block th:if="${reservation.reservationStatus == '결제취소'}">
+                <td>
+                    <button type="button" class="option_button" disabled>거절</button>
+                </td>
+            </th:block>
+            <th:block th:if="${reservation.reservationStatus != '결제취소'}">
+                <td>
+                    <button type="button" class="option_button" th:onclick="|javascript:paymentCancel(${reservation.orderNo})|">거절</button>
+                </td>
+            </th:block>
+        </tr>
+    </th:block>
+    <th:block th:if="${reservations.totalElements == 0}">
+        <tr style="text-align: center">
+            <td colspan="8">예약 내역이 없습니다.</td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+
+<div class="buttons_wrap">
+    <tr class="pagination"
+        th:with="start=${(reservations.number div 10)*10 + 1},
+           last=${(start + 9 < reservations.totalPages ? start + 9 : reservations.totalPages)}">
+        <td>
+            <a th:onclick="|javascript:reservationListAjax(1)|" aria-label="First">
+                <span aria-hidden="true">첫 페이지</span>
+            </a>
+        </td>
+
+        <td th:class="${reservations.first} ? 'disabled'">
+            <a th:onclick="${reservations.first} ? '' : 'javascript:reservationListAjax('+${reservations.number}+')'"
+               aria-label="Previous">
+                <span aria-hidden="true">&lt;</span>
+            </a>
+        </td>
+
+        <th:block th:if="${last != 0}">
+            <td th:each="page: ${#numbers.sequence(start, last)}"
+                th:class="${page == reservations.number + 1} ? 'active'">
+                <a th:text="${page}" th:onclick="|javascript:reservationListAjax(${page})|"></a>
+            </td>
+        </th:block>
+        <th:block th:if="${last == 0}">
+            <td class="active">
+                <a th:text="1" th:onclick="|javascript:reservationListAjax(1)|"></a>
+            </td>
+        </th:block>
+
+        <td th:class="${reservations.last} ? 'disabled'">
+            <a th:onclick="${reservations.last} ? '' : 'javascript:reservationListAjax('+${reservations.number+2}+')'"
+               aria-label="Next">
+                <span aria-hidden="true">&gt;</span>
+            </a>
+        </td>
+
+        <td>
+            <a th:onclick="|javascript:reservationListAjax(${reservations.totalPages})|" aria-label="Last">
+                <span aria-hidden="true">마지막 페이지</span>
+            </a>
+        </td>
+    </tr>
+</div>

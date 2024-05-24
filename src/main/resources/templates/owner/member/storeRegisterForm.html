@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner register</title>
+    <link rel="stylesheet" th:href="@{/css/owner/storeRegisterForm.css}"/>
+    <script type="text/javascript" th:src="@{/js/owner/storeRegisterForm.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/common/common.css}"/>
+</head>
+
+<body id="full_body">
+<div id="register_container">
+    <div class="side_logo"><a th:href="@{/}"><img th:src="@{/image/logo_orange_Removal.png}"></a></div>
+    <h3>업체 등록</h3>
+    <div id="register_wrap">
+        <form th:action="@{/owner/storeInfo}" th:method="post" enctype="multipart/form-data" id="registerStoreForm">
+            <input type="hidden" id="ownerNo" name="ownerNo" th:value="${ownerNo}">
+            <div class="form_list">
+                <div class="form_item">
+                    <input type="text" id="storeName" name="storeName" placeholder="업체명을 입력하세요">
+                </div>
+                <div class="form_item">
+                    <input type="text" id="notice" name="notice" placeholder="공지사항을 입력하세요">
+                </div>
+                <div class="form_item">
+                    <label for="region"></label>
+                    <select name="region" id="region">
+                        <option value="02">서울</option>
+                        <option value="031">경기</option>
+                        <option value="032">인천</option>
+                        <option value="053">대구</option>
+                        <option value="051">부산</option>
+                        <option value="052">울산</option>
+                        <option value="062">광주</option>
+                        <option value="033">강원</option>
+                        <option value="043">충북</option>
+                        <option value="041">충남</option>
+                        <option value="054">경북</option>
+                        <option value="055">경남</option>
+                        <option value="063">전북</option>
+                        <option value="061">전남</option>
+                        <option value="064">제주</option>
+                    </select>
+                </div>
+                <div class="form_item">
+                    <input type="text" id="address" name="address" placeholder="매장 주소를 입력하세요">
+                </div>
+                <div class="form_item">
+                    <input type="text" id="brn" name="brn" placeholder="사업자등록번호를 입력하세요">
+                </div>
+                <div class="form_item">
+                    <input type="text" id="phone" name="phone" placeholder="전화번호를 입력하세요">
+                </div>
+                <div class="form_item">
+                    <label for="thumbnail">대표사진</label>
+                    <input type="file" id="thumbnail" name="thumbnail">
+                </div>
+                <div class="form_item">
+                    <label for="infoPhoto">상세사진</label>
+                    <input type="file" id="infoPhoto" name="infoPhoto">
+                </div>
+                <div class="form_item tbl_item">
+                    <table>
+                        <colgroup>
+                            <col width="30%">
+                            <col width="35%">
+                            <col width="35%">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>사이즈</th>
+                            <th>가격</th>
+                            <th>수량</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><input type="text" id="size1" name="size1" value="s" readonly></td>
+                            <td><input type="number" id="price1" name="price1"></td>
+                            <td><input type="number" id="remain1" name="remain1"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="size2" name="size2" value="m" readonly></td>
+                            <td><input type="number" id="price2" name="price2"></td>
+                            <td><input type="number" id="remain2" name="remain2"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="size3" name="size3" value="l" readonly></td>
+                            <td><input type="number" id="price3" name="price3"></td>
+                            <td><input type="number" id="remain3" name="remain3"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <button class="regi_button" type="submit" onclick="return registerStore()">회원가입</button>
+            <button class="reset_button" type="reset"> reset </button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

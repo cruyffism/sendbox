@@ -1,0 +1,89 @@
+<!--아작스를 통해 보여줄 화면 -->
+<table class="board_content" cellspacing="0">
+    <caption>매니저 관리</caption>
+    <colgroup>
+        <col width="15%">
+        <col width="15%">
+        <col width="15%">
+        <col width="20%">
+        <col width="20%">
+        <col width="15%">
+        <col width="15%">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>계정</th>
+        <th>이름</th>
+        <th>성별</th>
+        <th>메일</th>
+        <th>연락처</th>
+        <th>지역</th>
+        <th>승인 여부</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:if="${adminMember.totalElements != 0}">
+        <tr th:each="admin: ${adminMember}">
+            <td th:text="${admin.adminId}"></td>
+            <td th:text="${admin.name}"></td>
+            <td th:text="${admin.gender}"></td>
+            <td th:text="${admin.mail}"></td>
+            <td th:text="${admin.phone}"></td>
+            <td th:text="${admin.part}"></td>
+            <td>
+                <button th:if="${admin.approval == 0}" type="button" th:onclick="|location.href='@{/admin/managerGrant/{adminNo}(adminNo=${admin.adminNo})}'|" class="option_button">승인</button>
+                <button th:if="${admin.approval == 1}" type="button" disabled class="option_button2">승인 완료</button>
+            </td>
+        </tr>
+    </th:block>
+    <th:block th:if="${adminMember.totalElements == 0}">
+        <tr style="text-align: center">
+            <td colspan="7">매니저 명단이 없습니다.</td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+
+<div class="buttons_wrap">
+    <tr class="pagination"
+        th:with="start=${(adminMember.number div 10)*10 + 1},
+           last=${(start + 9 < adminMember.totalPages ? start + 9 : adminMember.totalPages)}">
+        <td>
+            <a th:onclick="|javascript:adminListAjax(1)|" aria-label="First">
+                <span aria-hidden="true">첫 페이지</span>
+            </a>
+        </td>
+
+        <td th:class="${adminMember.first} ? 'disabled'">
+            <a th:onclick="${adminMember.first} ? '' : 'javascript:adminListAjax('+${adminMember.number}+')'"
+               aria-label="Previous">
+                <span aria-hidden="true">&lt;</span>
+            </a>
+        </td>
+
+        <th:block th:if="${last != 0}">
+            <td th:each="page: ${#numbers.sequence(start, last)}"
+                th:class="${page == adminMember.number + 1} ? 'active'">
+                <a th:text="${page}" th:onclick="|javascript:adminListAjax(${page})|"></a>
+            </td>
+        </th:block>
+        <th:block th:if="${last == 0}">
+            <td class="active">
+                <a th:text="1" th:onclick="|javascript:adminListAjax(1)|"></a>
+            </td>
+        </th:block>
+
+        <td th:class="${adminMember.last} ? 'disabled'">
+            <a th:onclick="${adminMember.last} ? '' : 'javascript:adminListAjax('+${adminMember.number+2}+')'"
+               aria-label="Next">
+                <span aria-hidden="true">&gt;</span>
+            </a>
+        </td>
+
+        <td>
+            <a th:onclick="|javascript:adminListAjax(${adminMember.totalPages})|" aria-label="Last">
+                <span aria-hidden="true">마지막 페이지</span>
+            </a>
+        </td>
+    </tr>
+</div>

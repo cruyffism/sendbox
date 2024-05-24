@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner modify account</title>
+    <link  th:inline="css" rel="stylesheet" th:href="@{/css/owner/modify_account_form.css}"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script> <!--임포트: jquery를 js에서 사용하기 위해서 -->
+    <script type="text/javascript" th:src="@{/js/owner/modify_account_form.js}"></script>
+    <script type="text/javascript" th:src="@{/js/owner/deleteInfo.js}"></script>
+</head>
+
+<body>
+<div th:replace="~{owner/include/nav :: NavFragment}"></div>
+<div id="modify_container">
+    <h1>개인정보 수정</h1>
+    <div id="modify_wrap">
+        <form th:action="@{/owner/updateInfo}" th:method="post" id="modify_account_form">
+            <!--readonly 혹은 disabled 있으면 백엔드로 데이터가 안 넘어가져서 히든으로 넘기기-->
+            <input type="hidden" id="no" name="ownerNo" th:value="${owner.ownerNo}">
+            <input type="hidden"  id="ownerId" name="ownerId" th:value="${owner.ownerId}">
+            <input type="hidden"  id="roleId" name="roleId" th:value="${owner.memberRole.roleId}">
+            <input type="hidden"  id="gender" name="gender" th:value="${owner.gender}">
+            <input type="hidden"  id="approvalYn" name="approvalYn" th:value="${owner.approvalYn}">
+            <input type="hidden"  id="deleteYn" name="deleteYn" th:value="N">
+            <div class="form_list">
+                <div class="form_item">
+                    <label for="id">아&ensp;이&ensp;디&emsp;&emsp;&ensp;</label>
+                    <input type="text" id="id" name="ownerId" th:value="${owner.ownerId}" readonly disabled>
+                </div>
+                <div class="form_item">
+                    <label for="password">비밀번호&emsp;&emsp;&ensp;</label>
+                    <input type="password" id="password" name="password" placeholder="비밀번호입력">
+                </div>
+                <div class="form_item">
+                    <label for="password_check">비밀번호확인&ensp;</label>
+                    <input type="password" id="password_check" name="password_again" placeholder="비밀번호 재입력">
+                </div>
+                <div class="form_item">
+                    <label for="name">이&emsp;&emsp;름&emsp;&emsp;&ensp;</label>
+                    <input type="text" id="name" name="name" th:value="${owner.name}">
+                </div>
+                <div class="form_item">
+                    <label for="mail">이&ensp;메&ensp;일&emsp;&emsp;&ensp;</label>
+                    <input type="email" id="mail" name="mail" th:value="${owner.mail}">
+                </div>
+                <div class="form_item">
+                    <label for="phone">전화번호&emsp;&emsp;&ensp;</label>
+                    <input type="tel" id="phone" name="phone" th:value="${owner.phone}">
+                </div>
+                <div class="form_item">
+                    <label for="gender">성&emsp;&emsp;별&emsp;&emsp;&ensp;</label>
+                    <input type="text" id="ownerGender" name="gender" th:value="${owner.gender}" readonly disabled>
+                </div>
+            </div>
+            <button class="modify_button" type="button" onclick="modifyAccount()">modify</button>
+            <button class="modify_button" type="reset"> reset </button>
+        </form>
+        <form id="dropAccountForm" th:action="@{/owner/deleteInfo}" th:method="POST">
+            <input type="hidden"  id="password2" name="password" value="">
+            <button class="drop_button" type="button" onclick="deleteInfo()">회원 탈퇴</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

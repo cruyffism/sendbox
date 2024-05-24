@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <title>User modify account</title>
+    <link th:inline="css" rel="stylesheet" th:href="@{/css/owner/storeForm.css}">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script> <!--임포트: jquery를 js에서 사용하기 위해서 -->
+    <!--<script type="text/javascript" th:src="@{/js/owner/deleteInfo.js}"></script>-->
+
+</head>
+
+<body>
+<div th:replace="~{owner/include/nav :: NavFragment}"></div>
+<div id="modify_container">
+    <h1>매장정보 수정</h1>
+    <div id="modify_wrap">
+        <form th:action="@{/owner/updateStoreInfo}" th:method="post" enctype="multipart/form-data">
+            <input type="hidden" id="storeNo" name="storeNo" th:value="${storeInfo.storeNo}">
+            <div class="form_list">
+                <div class="form_item">
+                    <label for="notice">공지사항 &emsp;&emsp;&ensp;</label>
+                    <input type="text" id="notice" name="notice" th:value="${storeInfo.notice}">
+                </div>
+                <div class="form_item">
+                    <label for="region">지&emsp;&emsp;역 &emsp;&emsp;&ensp;</label>
+                    <input type="text" id="region" name="region" th:value="${storeInfo.region}">
+                </div>
+                <div class="form_item">
+                    <label for="address">매장주소 &emsp;&emsp;&ensp;</label>
+                    <input type="text" id="address" name="address" th:value="${storeInfo.address}">
+                </div>
+                <div class="form_item">
+                    <label for="phone">매장전화번호 &ensp;</label>
+                    <input type="text" id="phone" name="phone" th:value="${storeInfo.phone}">
+                </div>
+                <div class="form_item">
+                    <label for="brn">사업자등록번호</label>
+                    <input type="text" id="brn" name="brn" th:value="${storeInfo.brn}">
+                </div>
+                <div class="form_item">
+                    <label for="thumbnail">대표사진&emsp;&emsp;&ensp;</label>
+                    <input type="file" accept=".jpg,.png" id="thumbnail" name="thumbnail">
+                </div>
+                <div class="form_item">
+                    <label for="infoPhoto">상세사진&emsp;&emsp;&ensp;</label>
+                    <input type="file" accept=".jpg,.png" id="infoPhoto" name="infoPhoto">
+                </div>
+                <div class="form_item price_from">
+                    <table>
+                        <colgroup>
+                            <col width="40%">
+                            <col width="30%">
+                            <col width="30%">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>사이즈</th>
+                            <th>가격</th>
+                            <th>수량</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="room: ${roomList}">
+                            <input type="hidden" th:id="roomNo+${roomStat.index+1}" th:name="roomNo+${roomStat.index+1}" th:value="${room.roomNo}">
+                            <input type="hidden" th:id="size+${roomStat.index+1}" th:name="size+${roomStat.index+1}" th:value="${room.size}">
+                            <td th:text="${room.size}"></td>
+                            <td><input th:id="price+${roomStat.index+1}" th:name="price+${roomStat.index+1}" th:value="${room.price}" type="number"></td>
+                            <td><input th:id="remain+${roomStat.index+1}" th:name="remain+${roomStat.index+1}" th:value="${room.remain}" type="number"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <button class="modify_button" type="submit">modify</button>
+            <button class="modify_button" type="reset"> reset </button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

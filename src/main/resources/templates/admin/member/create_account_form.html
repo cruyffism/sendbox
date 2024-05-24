@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin register</title>
+    <link rel="stylesheet" th:href="@{/css/admin/create_account_form.css}"/>
+    <link rel="stylesheet" th:href="@{/css/common/common.css}"/>
+    <script type="text/javascript" th:src="@{/js/admin/create_account_form.js}"></script>
+</head>
+<body id="full_body">
+
+<!--회원가입-->
+<div id="container">
+    <div id="register_container">
+        <div class="side_logo"><a th:href="@{/}"><img th:src="@{/image/logo_orange_Removal.png}"></a></div>
+        <h3>관리자 회원가입</h3>
+        <br>
+        <div id="register_wrap">
+            <form th:action="@{/admin/create_account_form}" th:method="post" id="create_account_from">
+                <input type="hidden" id="roleId" name="roleId" value="2">
+                <input type="hidden" id="deleteYn" name = "deleteYn" value="N">
+                <div class="form_list">
+                    <div class="form_item"><label for="adminId"></label>
+                        <input type="text" id="adminId" name="adminId" placeholder="아이디를 입력하세요" autofocus >
+                    </div><hr>
+                    <div class="form_item"><label for="password"></label>
+                        <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
+                    </div><hr>
+                    <div class="form_item"><label for="passwordAgain"></label>
+                        <input type="password" id="passwordAgain" name="passwordAgain" placeholder="비밀번호를 다시 입력하세요">
+                    </div>
+                </div>
+                <div class="form_list">
+                    <div class="form_item"><label for="name"></label>
+                        <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+                    </div><hr>
+                    <div class="form_item"><label for="mail"></label>
+                        <input type="email" id="mail" name="mail" placeholder="이메일을 입력하세요">
+                    </div><hr>
+                    <div class="form_item"><label for="phone"></label>
+                        <input type="tel" id="phone" name="phone" placeholder="전화번호를 입력하세요">
+                    </div><hr>
+                    <div class="form_item form_select">
+                        <label for="gender"></label>
+                        <select name="gender" id="gender">
+                            <option value="M">남자</option>
+                            <option value="W">여자</option>
+                        </select>
+                    </div><hr>
+                    <div class="form_item form_select">
+                        <label for="part"></label>
+                        <select name="part" id="part">
+                            <option value="all">전체</option>
+                            <option value="02">서울</option>
+                            <option value="031">경기</option>
+                            <option value="032">인천</option>
+                            <option value="053">대구</option>
+                            <option value="051">부산</option>
+                            <option value="052">울산</option>
+                            <option value="062">광주</option>
+                            <option value="033">강원</option>
+                            <option value="043">충북</option>
+                            <option value="041">충남</option>
+                            <option value="054">경북</option>
+                            <option value="055">경남</option>
+                            <option value="063">전북</option>
+                            <option value="061">전남</option>
+                            <option value="064">제주</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="regi_button" type="submit" onclick="return create_account_form()">Submit</button>
+            </form>
+            <div class="account_links">
+                <a th:href="@{/admin/login}">로그인 페이지로 이동</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

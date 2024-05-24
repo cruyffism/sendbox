@@ -1,0 +1,196 @@
+.store_container {
+    flex-direction: row;
+    /*display: flex;  !* 가로 정렬 *!*/
+    justify-content: space-between; /* 각 요소 사이의 간격을 최대화하여 가로로 정렬 */
+    margin-top: 60px;
+    height: auto;
+    min-height: 1000px;
+    width: 1400px;
+}
+
+.store_container .store_name {
+    font-size: 3.0em;
+    font-weight: bold;
+    margin: 60px 30px 0 30px;
+    /*background-color: red;*/
+}
+.detail_col1 {
+    width: 100%;
+    /*background-color: lightpink;*/
+    height: 600px;
+    display: flex;
+    padding: 10px;
+}
+
+.detail_row1 {
+    width: 1000px;
+    margin: 20px 20px;
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+/*썸네일*/
+.detail_row1 .thumbnail {
+    width: 1000px;
+    height: 500px; /*리뷰 생성시 230px설정할것*/
+    /*background-color: tan;*/
+    margin-bottom: 15px;
+    overflow: hidden; /* 이미지를 넘치지 않도록 설정 */
+}
+.detail_row1 .thumbnail img {
+    width: 100%;
+}
+
+/*리뷰창*/
+/*.detail_row1 .review {*/
+/*    width: 1000px;*/
+/*    height: 150px;*/
+/*    background-color: #b6ffb6;*/
+/*}*/
+
+/*오더창*/
+.detail_row2 {
+    width: 300px;
+    margin: 20px 20px;
+    padding: 10px;
+    /*background-color: #ffe2e2;*/
+}
+
+.detail_row2 .order_tap {
+    /*height: 500px;*/
+    border-radius: 15px;
+    border: 2px solid #fc9f27;
+    padding: 20px;
+    background-color: #ffffff;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*상세정보*/
+.detail_col2 {
+    width: 100%;
+}
+
+.detail_col2 .visual_title {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 40px auto;
+    font-weight: bold;
+}
+/*.detail_col2 .visual_title h2 {*/
+/*    margin: 20px 0;*/
+/*}*/
+.detail_col2 .detail_img {
+    /*overflow: hidden; !* 이미지를 넘치지 않도록 설정 *!*/
+    display: flex; /* flexbox 사용 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+}
+.detail_col2 .detail_img img {
+    width: auto; /* 너비 자동 */
+    max-width: 100%;
+    height: auto; /* 높이도 자동*/
+}
+.detail_col3 {
+    width: 100%;
+    padding: 10px;
+    height: 250px;
+}
+
+.detail_col3 .detail_info {
+    display: flex;
+}
+.detail_notice {
+    width: 900px;
+    height: 200px;
+    /*background-color: #ffffff;*/
+    margin: 20px 20px;
+    padding: 10px;
+}
+
+.detail_notice h2 {
+    margin: 20px auto;
+}
+
+.detail_address {
+    width: 300px;
+    height: 260px;
+    background-color: white;
+    /*border: 1px solid black;*/
+    margin: 20px 20px;
+    padding: 10px;
+}
+
+
+form hr {
+    /* background: #a2c4f3; */
+    background-color: #fc9f27;
+    height: 1px;
+    border: 0;
+}
+
+.form_list input {
+    border: 1px solid #fc9f27;
+    background-color: #fff;
+    padding: 10px;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+}
+#totalPrice {
+    border: none;
+    font-size: 1.2em;
+    text-align: right;
+    width: 180px;
+}
+.total_price{
+    display: flex;
+    align-items: center; /* '원'과 숫자를 수직으로 정렬합니다. */
+}
+.total_price span {
+    font-size: 1.2em;
+}
+.form_list select {
+    border: 1px solid #fc9f27;
+    padding: 10px;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.form_item {
+    margin: 5px;
+    padding: 5px;
+}
+.form_item label{
+    font-size: 0.8em;
+}
+.buttons_wrap {
+    text-align: center; /* 버튼을 가운데 정렬합니다. */
+    /*display: flex;*/
+}
+
+.detail_button {
+    background-color: #fc9f27;
+    width: 200px;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+    padding: 10px;
+    margin: 10px 0px 0px 0px; /* 각 버튼 사이의 간격을 조절합니다. */
+}
+
+.kakaoBt {
+    border: none #d9d9d9;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 10px 0 0 20px;
+    width: 200px;
+    display: block;
+
+    background-color: #f9e000 !important;
+    background: url('../../image/kakao.png') center left 25px/10% no-repeat;
+    color: #371c1d;
+}

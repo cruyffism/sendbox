@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User loginFrom</title>
+    <link rel="stylesheet" th:href="@{/css/user/login_form.css}"/>
+    <script type="text/javascript" th:src="@{/js/user/login_form.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/common/common.css}"/>
+</head>
+<body id="full_body">
+<div id="login_container">
+    <div class="side_logo"><a th:href="@{/}"><img th:src="@{/image/logo_orange_Removal.png}"></a> </div>
+    <h3> 일반 로그인</h3>
+    <div id="login_wrap">
+        <form th:action="@{/user/loginProc}" th:method="post" id="userLoginForm">
+            <div class="form_list">
+                <div class="form_item">
+                    <input type="text" id="userId" name="userId" placeholder="아이디를 입력하세요" autofocus>
+                </div>
+                <hr>
+                <div class="form_item">
+                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
+                </div>
+            </div>
+            <div th:if="${error != null}" >
+                <div th:text="${exception}" style="color: red; text-align: center; margin-bottom: 10px">
+                </div>
+            </div>
+            <button class="login_button" type="submit" onclick="userLoginForm()">로그인</button>
+        </form>
+        <div class="account_links">
+            <a th:href="@{/user/forgot_id}">아이디 찾기</a>
+            <a th:href="@{/user/reset_password_form}">비밀번호 찾기</a>
+            <a th:href="@{/user/terms}">회원가입</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <title>modify account ok</title>
+    <link  th:inline="css" rel="stylesheet" th:href="@{/css/common/account_result.css}"/>
+</head>
+<body>
+<!-- Navigation: 네브바-->
+<div th:replace="~{user/include/nav :: NavFragment}"></div>
+<div id="result_container">
+    <div class="result">
+        <h2>회원정보 수정이 완료되었습니다.</h2>
+        <a th:href="@{/}">홈으로</a>
+    </div>
+</div>
+</body>
+</html>

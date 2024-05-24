@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+  <meta charset="UTF-8">
+  <title>User modify account</title>
+  <link  th:inline="css" rel="stylesheet" th:href="@{/css/user/cartInfoForm.css}"/>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script> <!--임포트: jquery를 js에서 사용하기 위해서 -->
+  <script type="text/javascript" th:src="@{/js/user/cartList.js}"></script>
+</head>
+
+<body>
+<div th:replace="~{user/include/nav :: NavFragment}"></div>
+<div id="modify_container">
+  <h1>결제창</h1>
+  <div id="modify_wrap">
+    <form id="form1">
+      <!--readonly 혹은 disabled 있으면 백엔드로 데이터가 안 넘어가져서 히든으로 넘기기-->
+      <input type="hidden" id="roomNo" name="roomNo" th:value="${order.room.roomNo}">
+      <input type="hidden" id="orderNo" name="orderNo" th:value="${order.orderNo}">
+      <input type="hidden" id="userNo" name="userNo" th:value="${order.userMember.userNo}">
+      <input type="hidden" id="userId" name="userId" th:value="${order.userMember.userId}">
+      <input type="hidden" id="price" name="price" th:value="${order.room.price}">
+      <input type="hidden" id="storeName" name="storeName" th:value="${order.room.store.storeName}">
+      <input type="hidden" id="reservationNum" name="reservationNum" th:value="${order.reservationNum}">
+      <input type="hidden" id="startDate" name="startDate" th:value="${order.startDate}">
+      <input type="hidden" id="endDate" name="endDate" th:value="${order.endDate}">
+      <input type="hidden" id="size" name="size" th:value="${order.room.size}">
+      <input type="hidden" id="totalAmount" name="totalAmount" th:value="${order.totalAmount}">
+      <input type="hidden" id="totalPrice" name="totalPrice" th:value="${order.totalPrice}">
+      <div class="form_list">
+        <div class="form_item">
+          <label for="storeName2">매&ensp;장&ensp;명&emsp;&emsp;&emsp;&ensp;</label>
+          <input type="text" id="storeName2" name="storeName2" th:value="${order.room.store.storeName}" readonly disabled>
+        </div>
+        <div class="form_item">
+          <label for="reservationNum2">주문번호&emsp;&emsp;&emsp;&ensp;</label>
+          <input type="text" id="reservationNum2" name="reservationNum2" th:value="${order.reservationNum}" readonly disabled>
+        </div>
+        <div class="form_item">
+          <label for="startDate2">사용&ensp;시작일&emsp;&emsp;</label>
+          <input id="startDate2" name="startDate2" th:value="${order.startDate}" type="date" readonly disabled>
+        </div>
+        <div class="form_item">
+          <label for="endDate2">사용&ensp;종료일&emsp;&emsp;</label>
+          <input id="endDate2" name="endDate2" th:value="${order.endDate}" type="date" readonly disabled>
+        </div>
+        <div class="form_item">
+          <label for="size2">사&ensp;이&ensp;즈&emsp;&emsp;&emsp;&ensp;</label>
+          <input id="size2" name="size2" th:value="${order.room.size}" type="text" readonly disabled>
+        </div>
+        <div class="form_item">
+          <label for="totalAmount2">수&emsp;&emsp;량&emsp;&emsp;&emsp;&ensp;</label>
+          <input id="totalAmount2" name="totalAmount2" th:value="${order.totalAmount}" type="number" readonly disabled>
+        </div>
+        <div class="form_item">
+          <label for="totalPrice2">가&emsp;&emsp;격&emsp;&emsp;&emsp;&ensp;</label>
+          <input id="totalPrice2" name="totalPrice2" th:value="${order.totalPrice}" type="text" readonly disabled>
+        </div>
+      </div>
+      <button class="modify_button" type="button" onclick="payment()">결제</button>
+      <button class="modify_button" type="reset">초기화</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

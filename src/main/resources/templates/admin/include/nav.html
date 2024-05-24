@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:fragment="NavFragment">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin nav bar</title>
+    <link th:inline="css" th:href="@{/css/include/nav.css}" rel="stylesheet"/>
+
+</head>
+<body>
+<div id="container">
+    <div id="nav_wrap">
+        <div class="nav_bar">
+            <ul class="lnb_list">
+                <li class="lnb_item">
+                    <a th:href="@{/admin/mypageForm}">개인 정보 수정</a>
+                </li>
+                <li class="lnb_item">
+                    <a th:href="@{/admin/userList}">유저 관리</a>
+                </li>
+                <li class="lnb_item">
+                    <a th:href="@{/admin/ownerList}">오너 관리</a>
+                </li>
+                <li class="lnb_item" sec:authorize="hasRole('SUPERADMIN')">
+                    <a th:href="@{/admin/managerList}">매니저 관리</a>
+                </li>
+                <li class="lnb_item">
+                    <a th:href="@{/admin/storeList}">업체 관리</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

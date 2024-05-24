@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <link rel="stylesheet" href="../../static/css/board/list.css">
+</head>
+<body>
+<div class="side_bar">
+    <div class="visual_title"><span>고객센터</span></div>
+    <ul>
+        <div class="side_list">
+            <li class="side_item"><a th:href="@{/공지사항}">공지사항</a></li>
+            <li class="side_item"><a th:href="@{/이벤트}">이벤트</a></li>
+            <li class="side_item"><a th:href="@{/1:1문의}">1:1문의</a></li>
+            <li class="side_item"><a th:href="@{/FAQ}">FAQ</a></li>
+        </div>
+    </ul>
+</div>
+<div class="list_wrap">
+    <h1 class="board_title">공지사항</h1>
+    <table class="board_content" cellspacing="0">
+        <caption>게시판 리스트</caption>
+        <colgroup>
+            <col width="80">
+            <col>
+            <col width="50">
+            <col width="90">
+            <col width="100">
+            <col width="60">
+        </colgroup>
+        <thead>
+        <tr>
+            <th scope="col">번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">첨부</th>
+            <th scope="col">작성자</th>
+            <th scope="col">날짜</th>
+            <th scope="col">조회수</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="content_num">3</td>
+            <td class="title">
+                <a th:href="@{/게시글링크}">예시입니다 데이터베이스에서 끌어와야해요</a>
+            </td>
+            <td class="file"></td>
+            <td class="name">어드민이름</td>
+            <td class="date">reg_date</td>
+            <td class="hit">조회수</td>
+        </tr>
+        <tr>
+            <td class="content_num">2</td>
+            <td class="title">
+                <a th:href="@{/게시글링크}">예시입니다 페이지 수도 게시글에따라 달라져야해요</a>
+            </td>
+            <td class="file"></td>
+            <td class="name">어드민이름</td>
+            <td class="date">reg_date</td>
+            <td class="hit">조회수</td>
+        </tr>
+        <tr>
+            <td class="content_num">1</td>
+            <td class="title">
+                <a th:href="@{/게시글링크}">예시입니다 큰일났네..</a>
+            </td>
+            <td class="file"></td>
+            <td class="name">어드민이름</td>
+            <td class="date">reg_date</td>
+            <td class="hit">조회수</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="buttons_wrap">
+        <button type="button" class="list_buttons"><a href="#"><<</a></button>
+        <button type="button" class="list_buttons"><a href="#">1</a></button>
+        <button type="button" class="list_buttons"><a href="#">2</a></button>
+        <button type="button" class="list_buttons"><a href="#">3</a></button>
+        <button type="button" class="list_buttons"><a href="#">4</a> </button>
+        <button type="button" class="list_buttons"><a href="#">5</a> </button>
+        <button type="button" class="list_buttons"><a href="#">6</a> </button>
+        <button type="button" class="list_buttons"><a href="#">7</a> </button>
+        <button type="button" class="list_buttons"><a href="#">8</a> </button>
+        <button type="button" class="list_buttons"><a href="#">9</a> </button>
+        <button type="button" class="list_buttons"><a href="#">10</a> </button>
+        <button type="button" class="list_buttons"><a href="#">>></a></button>
+    </div>
+</div>
+</body>
+</html>

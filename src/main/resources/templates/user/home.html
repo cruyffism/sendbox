@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <title>User Home</title>
+    <link th:inline="css" th:href="@{/css/user/home.css}" rel="stylesheet"/>
+</head>
+
+<body>
+<div id="container">
+    <div id="home_container">
+        <div class="main_group1">
+            <!--   메인 첫번 째 행 그룹 (이벤트, 공지사항 슬라이더)-->
+            <div class="visual_title">
+                <span>공지 사항</span>
+            </div>
+            <div class="banner_wrap">
+                <div class="slide">
+                    <a th:href="@{/board/read(boardNo=1)}"><img th:src="@{/image/notice1.PNG}" alt="notice1"></a>
+                </div>
+                <div class="slide">
+                    <a th:href="@{/board/read(boardNo=2)}"><img th:src="@{/image/notice2.PNG}" alt="notice2"></a>
+                </div>
+                <div class="slide">
+                    <a th:href="@{/board/read(boardNo=3)}"><img th:src="@{/image/notice3.PNG}" alt="notice3"></a>
+                </div>
+                <div class="slide">
+                    <a th:href="@{/board/read(boardNo=4)}"><img th:src="@{/image/notice4.PNG}" alt="notice4"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_group2">
+            <!--   메인 두번 째 행 그룹-->
+            <div class="visual_title">
+                <span>지역별 매장</span>
+            </div>
+            <div class="quick_wrap">
+                <div class="quick_menu">
+                    <a th:href="@{/store(region='02')}"><img th:src="@{/image/seoul.PNG}" alt="quick1">
+                        <span>서울</span>
+                    </a>
+                </div>
+                <div class="quick_menu">
+                    <a th:href="@{/store(region='033')}"><img th:src="@{/image/gangwon.PNG}" alt="quick2">
+                        <span>강원</span>
+                    </a>
+                </div>
+                <div class="quick_menu">
+                    <a th:href="@{/store(region='051')}"><img th:src="@{/image/busan.PNG}" alt="quick3">
+                    <span>부산</span>
+                    </a>
+                </div>
+                <div class="quick_menu">
+                    <a th:href="@{/store(region='032')}"><img th:src="@{/image/incheon.PNG}" alt="quick4">
+                    <span>인천</span>
+                    </a>
+                </div>
+                <div class="quick_menu">
+                    <a th:href="@{/store(region='052')}"><img th:src="@{/image/ulsan.PNG}" alt="quick5">
+                    <span>울산</span>
+                    </a>
+                </div>
+                <div class="quick_menu">
+                    <a th:href="@{/store(region='064')}"><img th:src="@{/image/jeju.PNG}" alt="quick6">
+                    <span>제주</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="main_group3">
+            <!--   메인 세번 째 행 그룹 (홈페이지 사용법 기능은 없는 이미지)-->
+<!--            <div class="visual_title">-->
+<!--                <span>셀프 스토리지란?</span>-->
+<!--            </div>-->
+            <div class="manual_wrap">
+                <div class="manual_img">
+                    <img th:src="@{/image/howtoUser.png}" alt="manual">
+                </div>
+            </div>
+
+            <div class="gotoBox">
+                <a th:href="@{/store/searchList(storeName='')}"><img th:src="@{/image/gotoBtn.PNG}" alt="notice4"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

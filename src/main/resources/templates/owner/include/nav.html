@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      th:fragment="NavFragment">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner nav bar</title>
+    <link th:inline="css" th:href="@{/css/include/nav.css}" rel="stylesheet"/>
+</head>
+<body>
+<div id="container">
+    <div id="nav_wrap">
+        <div class="nav_bar">
+            <ul class="lnb_list">
+                <li class="lnb_item">
+                    <a th:href="@{/owner/mypageForm}">개인정보 수정</a>
+                </li>
+                <li class="lnb_item">
+                    <a th:href="@{/owner/reservationList}">예약 관리</a>
+                </li>
+                <li class="lnb_item">
+                    <a th:href="@{/owner/storeForm}">매장 정보 관리</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

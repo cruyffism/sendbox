@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>아이디 찾기</title>
+    <link rel="stylesheet" th:href="@{/css/owner/find_idAndPw_form.css}"/>
+    <link rel="stylesheet" th:href="@{/css/common/common.css}"/>
+</head>
+<body id="full_body">
+    <div id="find_container">
+        <div class="side_logo"><a th:href="@{/}"><img th:src="@{/image/logo_orange_Removal.png}"></a> </div>
+        <h3>아이디찾기</h3>
+        <div id="find_wrap">
+            <form method="post" th:action="@{/owner/forgot_id}">
+                <div class="form_list">
+                    <div class="form_item">
+                        <label for="name"></label>
+                        <input type="text" id="name" name="name" required placeholder="이름을 입력하세요">
+                    </div>
+                    <hr>
+                    <div class="form_item">
+                        <label for="email"></label>
+                        <input type="email" id="email" name="mail" required placeholder="이메일을 입력하세요">
+                    </div>
+                </div>
+                <button type="submit" class="find_button">아이디 찾기</button>
+            </form>
+            <div class="account_links">
+                <a th:href="@{/owner/login}">로그인</a>
+                <a th:href="@{/owner/reset_password_form}">비밀번호 찾기</a>
+                <a th:href="@{/owner/terms}">회원가입</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

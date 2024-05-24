@@ -1,0 +1,116 @@
+body {
+    background-image: url('../../image/bgbg2.png');
+    background-repeat: no-repeat;
+    background-position: 0 1px;
+}
+
+#home_container {
+    position: relative;
+    width: 1400px;
+    margin: 50px auto 0; /* 상단 여백 추가 */
+    /*border: #d08321 1px solid*/
+}
+
+
+/* 1단락 */
+#home_container .main_group1 {
+    width: 100%;
+    height: 300px;
+    /*border: 1px solid black;*/
+    margin-bottom: 20px;
+    margin-top: 20px;
+    position: relative;
+}
+
+
+.main_group1 .banner_wrap{
+    width: 100%;
+    height: 200px;
+     /*border: 1px solid #c88f1e;*/
+     display: flex; /* Flexbox를 사용하여 내부 요소들을 가로로 배열합니다. */
+}
+
+.slide {
+    flex: 0 0 auto; /* Flex item의 크기를 자동으로 설정합니다. */
+}
+
+.slide img {
+    border-radius: 10%;
+    display: block; /* 이미지를 블록 요소로 표시하여 가로로 정렬합니다. */
+    max-width: 100%; /* 이미지가 부모 요소를 넘어서지 않도록 최대 너비를 설정합니다. */
+    height: auto; /* 이미지의 세로 비율을 유지합니다. */
+    margin-right: 10px; /* 이미지 사이의 간격을 조정합니다. */
+    /*border: #d08321 1px solid;*/
+}
+
+
+/*2단락*/
+.main_group2 .quick_wrap{
+       width: 100%;
+       height: 250px;
+       /*border: 1px solid red;*/
+       display: flex; /* Flexbox를 사용하여 내부 요소들을 가로로 배열합니다. */
+   }
+
+.quick_menu {
+    flex: 0 0 auto; /* Flex item의 크기를 자동으로 설정합니다. */
+    margin-top: 20px;
+}
+
+.quick_menu img {
+    border-radius: 20%;
+    display: block; /* 이미지를 블록 요소로 표시하여 가로로 정렬합니다. */
+    max-width: 100%; /* 이미지가 부모 요소를 넘어서지 않도록 최대 너비를 설정합니다. */
+    height: auto; /* 이미지의 세로 비율을 유지합니다. */
+    margin-left: 50px; /* 이미지 사이의 간격을 조정합니다. */
+}
+.quick_menu span {
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+/*3단락*/
+.main_group3 {
+    width: 100%;
+    height: 100%;
+    /*border: 1px solid black;*/
+    margin-bottom: 20px;
+    /*margin-top: 50px;*/
+    position: relative;
+}
+.main_group3 .visual_title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.main_group3 .manual_wrap {
+    width: 100%;
+    height: 100%;
+}
+.manual_img {
+    display: flex; /* 이미지를 수평 및 수직 가운데 정렬하기 위해 flexbox 사용 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    width: 100%;
+}
+.manual_img img {
+    max-width: 100%; /* 이미지가 부모 요소를 넘어서지 않도록 최대 너비를 설정합니다. */
+    height: auto; /* 이미지의 세로 비율을 유지합니다. */
+    margin: 10px auto;
+}
+.visual_title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.gotoBox {
+    margin: 0 auto;
+    /*border: 1px solid black;*/
+    width: 370px;
+    height: 100px;
+}

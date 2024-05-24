@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <link th:inline="css" th:href="@{/css/board/boardRegister.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../static/css/board/boardRegister.css">
+</head>
+<body>
+<div id="container board_container">
+    <div class="form_wrap">
+        <h1 class="board_title">문의 등록</h1>
+        <form action="/inquary/register" method="post" class="board_content">
+            <div class="form_item">
+                <label for="title">제&emsp;&emsp;&ensp; 목&ensp;&ensp;<span class="requiredDot">*</span></label>
+                <input type="text" id="title" name="title" required placeholder="제목을 입력해주세요">
+            </div><hr>
+            <div class="form_item">
+                <label for="content">내&emsp;&emsp;&ensp; 용&ensp;&ensp;<span class="requiredDot">*</span></label>
+                <textarea id="content" name="content" required placeholder="내용을 입력해주세요.&#13;&#10;서비스 이용시 불편함이 발생한 경우 '마이페이지-예약내역'에서 예약번호를 확인 후 문의 해주시면 보다 빠르게 도와드리도록 하겠습니다. "></textarea>
+            </div>
+            <input class="regi_button" type="submit" value="문의 등록">
+        </form>
+        <input type="button" class="listBtn option_button" value="목록으로">
+    </div>
+</div>
+</body>
+<!-- JavaScript 부분 -->
+<script th:inline="javascript">
+    var actionForm = $("form");
+
+    $(".listBtn").click(function () {
+        var page = $("input[name='page']");
+        var type = $("input[name='type']");
+        var keyword = $("input[name='keyword']");
+
+        actionForm.empty();
+        actionForm.append(page);
+        actionForm.append(type);
+        actionForm.append(keyword);
+
+        actionForm
+            .attr("action", "/inquary/list")
+            .attr("method", "get");
+        actionForm.submit();
+    });
+</script>
+</html>

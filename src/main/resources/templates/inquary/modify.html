@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <link th:inline="css" th:href="@{/css/board/boardModify.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../static/css/board/boardModify.css">
+</head>
+<body>
+<div id="container board_container">
+    <div class="form_wrap">
+        <h1 class="board_title">문의 수정</h1>
+            <form th:action="@{/inquary/modify}" th:method="post" class="board_content">
+                <input type="hidden" name="page" th:value="${pageRequestDTO2.page}">
+                <input type="hidden" name="type" th:value="${pageRequestDTO2.type}">
+                <input type="hidden" name="keyword" th:value="${pageRequestDTO2.keyword}">
+                <input type="hidden" id="inquaryNo" name="inquaryNo" th:value="${dto.inquaryNo}">
+                <div class="form_item">
+                    <label for="title">제&emsp;&emsp;&ensp; 목&ensp;&ensp;<span class="requiredDot">*</span></label>
+                    <input type="text" class="form-control" id="title" name="title" th:value="${dto.title}">
+                </div>
+                <div class="form_item">
+                    <label for="content">내&emsp;&emsp;&ensp; 용&ensp;&ensp;<span class="requiredDot">*</span></label>
+                    <textarea class="form-control" rows="5" id="content" name="content" th:text="${dto.content}"></textarea>
+                </div><br>
+                <div class="buttons_wrap">
+                    <button type="submit" class="regi_button modifyBtn">수정완료</button><br>
+                    <button type="button" class="listBtn option_button">목록으로</button>
+                </div>
+            </form>
+
+
+    <script th:inline="javascript">
+        var actionForm = $("form"); //form 태그 객체
+
+        $(".listBtn").click(function() {
+
+            //var pageInfo = $("input[name='page']");
+            var page = $("input[name='page']");
+            var type = $("input[name='type']");
+            var keyword = $("input[name='keyword']");
+
+            actionForm.empty(); //form 태그의 모든 내용을 지우고
+
+            actionForm.append(page);
+            actionForm.append(type);
+            actionForm.append(keyword);
+
+
+            actionForm
+                .attr("action", "/inquary/list")
+                .attr("method","get");
+
+            actionForm.submit();
+
+        })
+
+        $(".modifyBtn").click(function() {
+            if(confirm("수정하시겠습니까?")) {
+                actionForm.submit();
+            } else {
+                return "redirect:/inquary/modify?inquaryNo=${dto.inquaryNo}&page=${pageRequestDTO2.page}&type=${pageRequestDTO2.type}&keyword=${pageRequestDTO2.keyword}";
+            }
+        });
+    </script>
+</body>
+</html>

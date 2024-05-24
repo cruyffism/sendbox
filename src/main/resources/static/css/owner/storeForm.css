@@ -1,0 +1,93 @@
+#modify_container {
+    width: 500px;
+    height: 900px;
+    border: 1px solid #fc9f27;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+    font-size: 10pt;
+}
+
+#modify_account_form {
+    margin: 40px auto 0px auto;
+    width: 350px;
+    list-style-type: none;
+    text-align: left;
+}
+
+#dropAccountForm{
+    margin: 0px auto;
+    width: 350px;
+    list-style-type: none;
+    text-align: left;
+}
+
+
+.form_list {
+    height: 650px;
+    border: 1px solid #fc9f27;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 25px;
+}
+.form_item {
+    margin: 5px;
+    padding: 5px;
+}
+
+input[type="number"] {
+    margin: 10px 5px 10px 5px;
+    padding: 10px;
+    width: 110px;
+    height: 30px;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.form_list input[type="text"] {
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px;
+    width: 200px;
+    height: 40px;
+    margin-left: 10px;
+}
+.form_list input[type="file"] {
+    background-color: #fff;
+    padding: 10px;
+    width: 200px;
+    height: 40px;
+    margin-left: 10px;
+}
+.form_list input[type="file"]::file-selector-button {
+    border: 1px solid #dadada;
+    border-radius: 15px;
+    height: 30px;
+    width: 80px;
+}
+/*마지막 form_list 요소에 탑 마진 30*/
+.price_from {
+    margin-top: 20px;
+}
+.modify_button {
+    background-color: #fc9f27;
+    width: 300px;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+    padding: 10px;
+    margin-top: 10px;
+}
+.drop_button {
+    background-color: #838383;
+    width: 300px;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+    padding: 10px;
+    margin-top: 10px;
+}

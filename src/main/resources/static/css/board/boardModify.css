@@ -1,0 +1,101 @@
+#board_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    height: 100vh; /* 화면의 높이의 100%를 차지 */
+}
+.form_wrap {
+    width: 900px;
+    position: relative; /* 부모 요소를 상대적으로 설정 */
+    padding: 20px;
+    margin: 0 auto; /* 좌우 가운데 정렬 */
+    text-align: center; /* 내부 요소들을 가로로 중앙 정렬 *
+    /*margin: 30px 20px 30px 20px;*/
+    /*border: red 1px solid;*/
+}
+.form_item {
+    margin: 5px;
+    padding: 5px;
+}
+.form_item .readonly {
+    background-color: #dddddd;
+}
+.board_title {
+    text-align: center;
+    margin: 60px auto 50px auto;
+}
+
+.board_content{
+    width:100%;
+    border-style: solid;
+    border-width: 2px 1px 1px 1px;
+    border-color: #383838 #c2c2c2 #c2c2c2 #c2c2c2;
+    background: white;
+    padding: 20px;
+    margin: 30px auto;
+}
+.board_content input[type="text"] {
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px;
+    width: 600px;
+}
+.board_content input[type="file"] {
+    padding: 10px;
+    margin: 10px;
+    width: 600px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.board_content textarea{
+    width: 600px;
+    height: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    background-color: #fff;
+    vertical-align: top;
+}
+
+input[type="file"]::file-selector-button {
+    border: 1px solid #dadada;
+    border-radius: 15px;
+    height: 30px;
+    width: 80px;
+    /*float: right;*/
+}
+.board_content hr {
+    background-color: #c2c2c2;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.option_button {
+    width: 70px;
+    height: 30px;
+    background-color: #ffffff;
+    border: #999 1px solid;
+    border-radius: 10px;
+    margin: 20px 10px ;
+}
+.option_button:hover {
+    background-color: #999;
+    color: #ffffff;
+}
+.regi_button {
+    background-color: #fc9f27;
+    width: 400px;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+    padding: 10px;
+    margin-left: 25px;
+}
+.requiredDot {
+    color: red;
+    font-weight: 800;
+}

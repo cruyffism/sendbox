@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+</head>
+<body>
+<h1>상품 상세페이지</h1>
+<div>
+    <h2 th:text="${product.name}"></h2>
+    <p th:text="${product.description}"></p>
+    <p th:text="'가격: ' + ${#numbers.formatDecimal(product.price, 0, 'COMMA', 0)}"></p>
+    <!-- 가격을 숫자 형식으로 포맷팅하고 쉼표를 추가합니다. -->
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+#modify_container {
+    width: 500px;
+    height: 700px;
+    border: 1px solid #fc9f27;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+    font-size: 10pt;
+}
+
+#modify_account_form {
+    margin: 40px auto 0px auto;
+    width: 350px;
+    list-style-type: none;
+    text-align: left;
+}
+
+#dropAccountForm{
+    margin: 0px auto;
+    width: 350px;
+    list-style-type: none;
+    text-align: left;
+}
+
+.form_list {
+    border: 1px solid #fc9f27;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    height: 420px;
+    padding: 15px 0 0 0 ;
+}
+.form_item {
+    margin: 5px;
+    padding: 5px;
+}
+
+.modify_button {
+    background-color: #fc9f27;
+    width: 300px;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+.drop_button {
+    background-color: #838383;
+    width: 300px;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+.form_list input {
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px;
+    width: 200px;
+    height: 40px;
+    margin-left: 10px;
+}

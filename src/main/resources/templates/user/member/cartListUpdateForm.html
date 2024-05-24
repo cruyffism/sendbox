@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <title>User modify account</title>
+        <link  th:inline="css" rel="stylesheet" th:href="@{/css/user/cartInfoForm.css}"/>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script> <!--임포트: jquery를 js에서 사용하기 위해서 -->
+        <script type="text/javascript" th:src="@{/js/user/cartList.js}"></script>
+</head>
+
+<body>
+<div th:replace="~{user/include/nav :: NavFragment}"></div>
+<div id="modify_container">
+    <h1>장바구니 수정</h1>
+    <div id="modify_wrap">
+        <form th:action="@{/user/updateCart}" th:method="post" id="form1">
+            <!--readonly 혹은 disabled 있으면 백엔드로 데이터가 안 넘어가져서 히든으로 넘기기-->
+            <input type="hidden" id="roomNo" name="roomNo" value="">
+            <input type="hidden" id="onePrice" name="onePrice" value="">
+            <input type="hidden" id="orderNo" name="orderNo" th:value="${cart.orderNo}">
+            <input type="hidden" id="userNo" name="userNo" th:value="${cart.userMember.userNo}">
+            <input type="hidden" id="userId" name="userId" th:value="${cart.userMember.userId}">
+            <input type="hidden" id="price" name="price" th:value="${cart.room.price}">
+            <input type="hidden" id="storeName" name="storeName" th:value="${cart.room.store.storeName}">
+            <input type="hidden" id="reservationNum" name="reservationNum" th:value="${cart.reservationNum}">
+            <div class="form_list">
+                <div class="form_item">
+                    <label for="storeName">매&ensp;장&ensp;명&emsp;&emsp;&emsp;&ensp;</label>
+                    <input type="text" id="storeName2" name="storeName2" th:value="${cart.room.store.storeName}" readonly disabled>
+                </div>
+                <div class="form_item">
+                    <label for="storeName">주문번호&emsp;&emsp;&emsp;&ensp;</label>
+                    <input type="text" id="reservationNum2" name="reservationNum2" th:value="${cart.reservationNum}" readonly disabled>
+                </div>
+                <div class="form_item">
+                    <label for="startDate">사용&ensp;시작일&emsp;&emsp;</label>
+                    <input id="startDate" name="startDate" th:value="${cart.startDate}" type="date"  onchange="updateTotalPrice()">
+                </div>
+                <div class="form_item">
+                    <label for="endDate">사용&ensp;종료일&emsp;&emsp;</label>
+                    <input id="endDate" name="endDate" th:value="${cart.endDate}" type="date"  onchange="updateTotalPrice()">
+                </div>
+                <div class="form_item">
+                    <label for="sizeType">사&ensp;이&ensp;즈&emsp;&emsp;&emsp;&ensp;</label>
+                    <select id = "sizeType"  onchange="updateTotalPrice()">
+                        <th:block th:each="room : ${roomList}">
+                            <option th:value="${room.roomNo}+','+${room.price}" th:text="${room.size}" th:selected="${cart.room.size} == ${room.size}" readonly></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="form_item">
+                    <label for="totalAmount">수&emsp;&emsp;량&emsp;&emsp;&emsp;&ensp;</label>
+                    <input id="totalAmount" name="totalAmount" th:value="${cart.totalAmount}" type="number"  onchange="updateTotalPrice()">
+                </div>
+                <div class="form_item">
+                    <label for="totalPrice">가&emsp;&emsp;격&emsp;&emsp;&emsp;&ensp;</label>
+                    <input id="totalPrice" name="totalPrice" th:value="${cart.totalPrice}" type="text" readonly>
+                </div>
+            </div>
+            <button class="modify_button" type="button" onclick = "updateCart()">수정</button>
+            <button class="modify_button" type="reset">초기화</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+#footer_wrap {
+    margin-top: 50px;
+    /*border: aqua 1px solid;*/
+    border-top: #7d7d7d 1px solid;
+
+}
+
+
+/*  하단 링크  */
+#footer_wrap .link {
+    height: 55px;
+    position: relative;
+    /*background-color: darksalmon;*/
+    padding: 15px 0 12px 0;
+    text-align: left;
+    width: 100%;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+#footer_wrap .link_item {
+    display: inline-block;
+    position: relative;
+    padding: 0 15px 0 15px;
+}
+#footer_wrap .link_item a:hover {
+    text-decoration: underline;
+}
+
+/*  사이트 정보 footer_content  */
+#footer_wrap .footer_content {
+    height: 175px;
+    position: relative;
+    /*background-color: darksalmon;*/
+}
+#footer_wrap .sb_info {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 40px;
+    color: #7d7d7d;
+    font-size: 15px;
+    line-height: 24px;
+    vertical-align: top;
+}
+#footer_wrap .footer_logo {
+    vertical-align: top;
+    float: right;
+    width: 150px;
+    height: 150px;
+    margin-right: 50px;
+}
+#footer_wrap .footer_logo img {
+    width: 100%;
+    height: 100%;
+}

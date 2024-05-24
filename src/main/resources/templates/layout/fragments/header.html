@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:fragment="HeaderFragment">
+<head>
+    <meta charset="UTF-8">
+    <link th:inline="css" th:href="@{/css/include/header.css}" rel="stylesheet"/>
+    <!--    <link href="../../../static/css/include/header.css" rel="stylesheet"/>-->
+    <script type="text/javascript" th:src="@{/js/searchList.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="icon" th:href="@{/image/favicon.ico}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{/image/favicon.ico}" type="image/x-icon">
+</head>
+
+<body>
+<div id="container">
+    <header id="header">
+        <div id="header_wrap">
+            <!-- header top bar-->
+            <form id="logout" name="logout" th:action="@{/logout}" method="post">
+                <div class="top_bar" sec:authorize="hasRole('USER') || hasRole('ANONYMOUS')">
+                    <!-- logo -->
+                    <div class="logo">
+                        <a th:href="@{/}"> <!-- 메인 홈으로 이동 -->
+                            <img th:src="@{/image/logo_orange_crop.png}" alt="logo">
+                        </a>
+                    </div>
+                    <div class="account_link">
+                        <ul class="link_list">
+                            <li class="link_item"><a th:href="@{/board/noticeList}">고객센터</a></li>
+                            <li class="link_item" sec:authorize="isAuthenticated()"><a onclick="document.getElementById('logout').submit();"> 로그아웃</a>
+                            </li>
+                            <li class="link_item" sec:authorize="isAuthenticated()"><a th:href="@{/user/mypageForm}">마이페이지</a>
+                            </li>
+                            <li class="link_item" sec:authorize="isAnonymous()"><a
+                                    th:href="@{/checkPositionLogin}">로그인</a></li>
+                            <li class="link_item" sec:authorize="isAnonymous()"><a th:href="@{/checkPositionRegister}">회원가입</a>
+                            </li>
+                            <li class="link_item" sec:authorize="isAuthenticated()"><a th:href="@{/user/cartList}">장바구니</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div> <!-- top_bar -->
+            </form>
+            <form id="logout" name="logout" th:action="@{/logout}" method="post">
+                <div class="top_bar" sec:authorize="hasRole('ADMIN') || hasRole('SUPERADMIN')">
+                    <!-- logo -->
+                    <div class="logo">
+                        <a th:href="@{/admin/home}"> <!-- 메인 홈으로 이동 -->
+                            <img th:src="@{/image/logo_orange_crop.png}" alt="logo">
+                        </a>
+                    </div>
+                    <div class="account_link">
+                        <ul class="link_list">
+                            <li class="link_item"><a th:href="@{/board/noticeList}">고객센터</a></li>
+                            <li class="link_item" sec:authorize="isAuthenticated()"><a onclick="document.getElementById('logout').submit();"> 로그아웃</a>
+                            </li>
+                            <li class="link_item" sec:authorize="isAuthenticated()"><a
+                                    th:href="@{/admin/mypageForm}">마이페이지</a></li>
+                            <li class="link_item" sec:authorize="isAnonymous()"><a
+                                    th:href="@{/checkPositionLogin}">로그인</a>
+                            </li>
+                            <li class="link_item" sec:authorize="isAnonymous()"><a
+                                    th:href="@{/checkPositionRegister}">회원가입</a></li>
+                            <!--                        sec:authorize="isAuthenticated()" 로그인 상태 sec:authorize="!isAuthenticated()"로그아웃상태 -->
+                        </ul>
+                    </div>
+                </div> <!-- top_bar -->
+            </form>
+            <form id="logout" name="logout" th:action="@{/logout}" method="post">
+                <div class="top_bar" sec:authorize="hasRole('OWNER')">
+                    <!-- logo -->
+                    <div class="logo">
+                        <a th:href="@{/owner/home}"> <!-- 메인 홈으로 이동 -->
+                            <img th:src="@{/image/logo_orange_crop.png}" alt="logo">
+                        </a>
+                    </div>
+                    <div class="account_link">
+                        <ul class="link_list">
+                            <li class="link_item"><a th:href="@{/board/noticeList}">고객센터</a></li>
+                            <li class="link_item" sec:authorize="isAuthenticated()"><a onclick="document.getElementById('logout').submit();"> 로그아웃</a>
+                            </li>
+                            <li class="link_item" sec:authorize="isAuthenticated()"><a
+                                    th:href="@{/owner/mypageForm}">마이페이지</a></li>
+                            <li class="link_item" sec:authorize="isAnonymous()"><a
+                                    th:href="@{/checkPositionLogin}">로그인</a>
+                            </li>
+                            <li class="link_item" sec:authorize="isAnonymous()"><a
+                                    th:href="@{/checkPositionRegister}">회원가입</a></li>
+                            <!--                        sec:authorize="isAuthenticated()" 로그인 상태 sec:authorize="!isAuthenticated()"로그아웃상태 -->
+                        </ul>
+                    </div>
+                </div> <!-- top_bar -->
+            </form>
+
+            <div class="header_home">
+
+                <!--  home search-->
+                <div class="header_search">
+                    <form class="search_form" th:action="@{/store/searchList}" method="get">
+                        <label for="search" class="search_label"></label>
+                        <input type="search" id="search" placeholder="검색어를 입력하세요." th:name="storeName">
+                        <button class="search_button" type="submit">검색</button>
+                    </form>
+                    <div class="search_list_wrap">
+                        <ul class="search_list">
+                            <li class="search_item"><a
+                                    th:href="@{/store(region='02')}">#서울 매장</a>
+                            </li>
+                            <li class="search_item"><a
+                                    th:href="@{/store(region='031')}">#경기 매장</a>
+                            </li>
+                            <li class="search_item"><a
+                                    th:href="@{/store(region='051')}">#부산 매장</a>
+                            </li>
+                            <li class="search_item"><a
+                                    th:href="@{/store(region='032')}">#인천 매장</a>
+                            </li>
+                            <li class="search_item"><a
+                                    th:href="@{/store(region='033')}">#강원 매장</a>
+                            </li>
+                        </ul>
+                    </div>  <!-- search_list_wrap -->
+                </div> <!-- search -->
+            </div> <!-- home -->
+        </div> <!-- header_wrap -->
+    </header>
+</div>
+</body>
+</html>

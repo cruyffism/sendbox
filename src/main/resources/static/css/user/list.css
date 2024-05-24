@@ -1,0 +1,129 @@
+
+.visual_title{
+    font-size: 20pt;
+    font-weight: 800;
+    margin: 40px auto;
+    width: 150px;
+    padding: 20px;
+    border-bottom: 2px black solid;
+    text-align: center;
+}
+
+.clear_button {
+    width: 110px;
+    height: 35px;
+    background-color: #ffffff;
+    border: #999 1px solid;
+    border-radius: 15pc;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.clear_button:hover {
+    background-color: #999;
+    color: #ffffff;
+}
+
+.option_button {
+    width: 50px;
+    height: 25px;
+    background-color: #ffffff;
+    border: #999 1px solid;
+    border-radius: 15pc;
+}
+
+.option_button:hover {
+    background-color: #999;
+    color: #ffffff;
+}
+/*게시판 기본 틀 don't fix it!!!!!!!!!!!!!!!!*/
+.list_wrap {
+    width: 900px;
+    position: absolute;
+    display: inline-block;
+    margin: 30px 20px 30px 20px;
+    /*border: red 1px solid;*/
+}
+.board_title {
+    text-align: center;
+    margin: 30px auto 50px auto;
+
+}
+
+.board_content,.board_content th,.board_content td{
+    border:0
+}
+.board_content a{
+    color:#383838;text-decoration:none
+}
+.board_content{
+    width:100%;
+    border-bottom:1px solid #999;
+    color:#666;
+    font-size:12px;
+    table-layout:fixed
+}
+.board_content caption{
+    display:none
+}
+.board_content th{
+    padding:6px 0 8px;
+    border-top:solid 1px #999;
+    border-bottom:solid 1px #b2b2b2;
+    background-color:#f1f1f4;
+    color:#333;
+    font-weight:bold;
+    line-height:20px;
+    vertical-align:top
+}
+.board_content td{
+    padding:10px 0 11px;
+    border-bottom:solid 1px #d2d2d2;
+    text-align:center;
+    line-height:18px;
+}
+.board_content .date,.board_content .hit, .board_content .content_num{
+    padding:0;
+    font-size:11px;
+    line-height:normal
+}
+.board_content .title{
+    text-align:left;
+    padding-left:15px;
+    font-size:13px;
+}
+.board_content .title .pic, .board_content .title .new, .board_content .title .file{
+    margin:0 0 2px;
+    vertical-align:middle;
+    width:10px;
+    height:9px;
+}
+.buttons_wrap {
+    margin: 40px auto;
+    text-align: center;
+}
+
+.list_buttons{
+    border: 1px solid #ccc;
+    background-color: #fff;
+    width: 30px;
+    height: 30px;
+    font-size: 0.8em;
+    padding: 5px;
+}
+.list_buttons:hover{
+    color: #333;
+    border: #333 1px solid;
+}
+.list_buttons:active{
+    color: #333;
+    background-color: #d08321;
+}
+
+/* .sub_news .title a.comment{
+  padding:0;
+  background:none;
+  color:#f00;
+  font-size:12px;
+  font-weight:bold
+} */

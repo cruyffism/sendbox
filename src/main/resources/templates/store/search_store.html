@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Store</title>
+    <link th:inline="css" th:href="@{/css/store/searchList.css}" rel="stylesheet"/>
+    <!--<script type="text/javascript" th:src="@{/js/searchList.js}"></script>-->
+</head>
+<body>
+    <div id="container" class="search_container">
+        <div class="row1">
+            <div class="side_bar">
+                <div class="keyword_filter">
+<!--                    필터 들어갑니다. || 키워드 -->
+                </div>
+                <div class="range_filter">
+<!--                    범위값 조정해서 검색하는 필터-->
+                </div>
+            </div> <!-- side_bar -->
+        </div> <!-- row1 -->
+        <div class="row2">
+            <div class="store_list">
+                <!-- storeList가 null이거나 비어있는 경우 -->
+                <div th:if="${storeList == null or #lists.isEmpty(storeList)}" class="no_result">
+                    <p>검색 결과가 없습니다.</p>
+                </div>
+                <!-- storeList에 데이터가 있는 경우 -->
+                <div th:if="${storeList != null and not #lists.isEmpty(storeList)}">
+                    <div id="search_result">
+                        <!-- storeList를 반복하며 각 store 정보 표시 -->
+                        <div th:each="store : ${storeList}" class="store_item">
+                            <a th:href="@{'/store/detail/' + ${store.storeNo}}" class="store_link">
+                                <input type="hidden" id="storeNo" name="storeNo" th:value="${store.storeNo}">
+                                <div class="search_thumbnail">
+                                    <img th:src="@{'/upload/'+${store.thumbnail}}" alt="썸네일" class="search_thumbnail">
+                                </div>
+                                <div class="search_info">
+                                    <div class="search_infoName">
+                                        <p th:text="${store.storeName}"></p>
+                                    </div>
+    <!--                                <div class="search_infoReview">-->
+    <!--                                    <p th:text="${store.storeName}"></p>-->
+    <!--                                </div>-->
+                                    <div class="room_info" th:each="room : ${store.rooms}">
+                                        <p th:text="${room.size}+'룸 : '+${room.price}+'원'"></p>
+                                    </div>
+                                </div> <!-- search_info -->
+                            </a> <!-- store_link -->
+                        </div>
+                    </div> <!-- store_item -->
+                </div>
+            </div> <!-- store_list -->
+        </div> <!-- row2 -->
+    </div> <!-- container -->
+</body>
+</html>

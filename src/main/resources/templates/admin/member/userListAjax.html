@@ -1,0 +1,84 @@
+<!--아작스를 통해 보여줄 화면 -->
+<table class="board_content" cellspacing="0">
+    <caption>회원 관리</caption>
+    <colgroup>
+        <col width="15%">
+        <col width="15%">
+        <col width="15%">
+        <col width="20%">
+        <col width="20%">
+        <col width="15%">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>계정</th>
+        <th>이름</th>
+        <th>성별</th>
+        <th>메일</th>
+        <th>연락처</th>
+        <th>삭제</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:if="${userMember.totalElements != 0}">
+        <tr th:each="user: ${userMember}">
+            <input type="hidden" id="userNo" name="userNo" th:value="${user.userNo}">
+            <td th:text="${user.userId}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.gender}"></td>
+            <td th:text="${user.mail}"></td>
+            <td th:text="${user.phone}"></td>
+            <td><button type="button" th:onclick="|javascript:deleteUser()|" class="option_button">삭제</button></td>
+        </tr>
+    </th:block>
+    <th:block th:if="${userMember.totalElements == 0}">
+        <tr style="text-align: center">
+            <td colspan="6">회원 명단이 없습니다.</td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+
+<div class="buttons_wrap">
+    <tr class="pagination"
+        th:with="start=${(userMember.number div 10)*10 + 1},
+           last=${(start + 9 < userMember.totalPages ? start + 9 : userMember.totalPages)}">
+        <td>
+            <a th:onclick="|javascript:userListAjax(1)|" aria-label="First">
+                <span aria-hidden="true">첫 페이지</span>
+            </a>
+        </td>
+
+        <td th:class="${userMember.first} ? 'disabled'">
+            <a th:onclick="${userMember.first} ? '' : 'javascript:userListAjax('+${userMember.number}+')'"
+               aria-label="Previous">
+                <span aria-hidden="true">&lt;</span>
+            </a>
+        </td>
+
+        <th:block th:if="${last != 0}">
+            <td th:each="page: ${#numbers.sequence(start, last)}"
+                th:class="${page == userMember.number + 1} ? 'active'">
+                <a th:text="${page}" th:onclick="|javascript:userListAjax(${page})|"></a>
+            </td>
+        </th:block>
+        <th:block th:if="${last == 0}">
+            <td class="active">
+                <a th:text="1" th:onclick="|javascript:userListAjax(1)|"></a>
+            </td>
+        </th:block>
+
+        <td th:class="${userMember.last} ? 'disabled'">
+            <a th:onclick="${userMember.last} ? '' : 'javascript:userListAjax('+${userMember.number+2}+')'"
+               aria-label="Next">
+                <span aria-hidden="true">&gt;</span>
+            </a>
+        </td>
+
+        <td>
+            <a th:onclick="|javascript:userListAjax(${userMember.totalPages})|" aria-label="Last">
+                <span aria-hidden="true">마지막 페이지</span>
+            </a>
+        </td>
+    </tr>
+</div>

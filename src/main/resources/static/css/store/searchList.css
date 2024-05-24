@@ -1,0 +1,118 @@
+.search_container {
+    flex-direction: row;
+    display: flex;  /* 가로 정렬 */
+    justify-content: space-between; /* 각 요소 사이의 간격을 최대화하여 가로로 정렬 */
+    margin-top: 60px;
+    height: auto;
+    min-height: 1000px;
+}
+
+/* row1 설정 */
+.row1 {
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    width: 100px; /* 300px 너비 */
+    /*border: red 1px solid;*/
+}
+
+.side_bar{
+    /*border:  1px solid #ccc;*/
+    padding: 10px;
+    width: 250px;
+    height: 500px;
+    border-radius: 15px;
+    position: relative;
+    display: inline-block;
+    margin: 50px 0 0 0;
+    /* float: left; */
+}
+
+
+/* row2 설정 */
+.row2 {
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    width: 1200px; /* 1400px 너비 */
+
+}
+
+.store_list {
+    width: 100%;
+    display: inline-block;
+    /*border: blue 1px solid;*/
+}
+
+/*no_result 설정*/
+.no_result { /*수정전*/
+    font-size: 2.0em; /* 글자 크기 */
+    font-weight: bold; /* 글자 두껍게 */
+    margin-top: 100px; /* 위 여백 100px */
+    text-align: center; /* 가운데 정렬 */
+}
+#search_result {
+    margin-top: 50px;
+}
+/*search_thumbnail설정*/
+.search_thumbnail { /*수정전*/
+    width: 400px; /* 400px 너비 */
+    height: 200px; /* 200px 높이 */
+    border-radius: 15px; /* 테두리 둥글게 */
+    background-color: #fdb75f; /* 배경색 */
+    margin-right: 20px; /* 오른쪽 여백 20px */
+}
+/*.search_thumbnail img{*/
+/*    width: 400px;*/
+/*    height: 200px;*/
+/*}*/
+.store_item {
+    display: flex; /* 가로 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+    width: 1000px; /* 가로 너비 */
+    height: 220px; /* 높이 */
+    margin-top: 30px; /* 여백 */
+    border-radius: 15px;
+    border: 1px solid #dbdbdb73;
+    padding: 10px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+.store_item > .store_link {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    color: inherit; /* 부모 요소로부터 색상 상속 */
+}
+.store_item > .store_link:focus,
+.store_item > .store_link:active {
+    outline: none; /*외곽선 제거 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+.store_item:hover {
+    background-color: rgba(204, 204, 204, 0.44); /* 호버 시 배경색 변경 */
+    border-radius: 15px; /* 테두리 둥굴게 */
+}
+
+.search_info {
+    display: flex; /* flex 컨테이너로 설정 */
+    width: 600px; /* 100% 너비 */
+    height: 200px; /* 200px 높이 */
+    /*border: #d08321 1px solid; !* 테두리 설정 *!*/
+    flex-direction: column;
+}
+
+/* search_infoName 설정 */
+.search_infoName {
+    margin-top: 20px;
+    font-weight: bold; /* 이름 볼드체 */
+    font-size: 2.0em;
+}
+
+/*room_info 설정*/
+.room_info {
+    font-weight: bold; /* 가격 볼드체 */
+    font-size: 1.5em; /* 글자 크기 */
+    text-align: right;
+    margin-top: auto;
+    margin-bottom: 20px;
+    margin-right: 50px;
+}

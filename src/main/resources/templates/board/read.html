@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      layout:fragment="Content">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/board/read.css">
+    <link th:inline="css" th:href="@{/css/board/read.css}" rel="stylesheet"/>
+</head>
+
+
+<body id="board_container">
+<div class="read_wrap">
+    <table class="board_content" cellspacing="0">
+        <colgroup>
+            <col width="20">
+            <col width="20">
+            <col width="40">
+            <col width="200">
+            <col width="40">
+            <col width="60">
+            <col width="40">
+            <col width="70">
+        </colgroup>
+        <tr>
+            <th>No.</th>
+            <td th:text="${dto.boardNo}" id="boardNo" name="boardNo" class="read_td"></td>
+            <th>제목</th>
+            <td th:text="${dto.title}" id="title" name="title" class="read_td"></td>
+            <th>작성자</th>
+            <td th:text="${dto.writerName}" id="writerName" name="writerName" class="read_td"></td>
+            <th>작성일</th>
+            <td th:if="${dto.modDate == null}" th:text="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}"
+                class="read_td">2024/04/28
+            </td>
+            <td th:if="${dto.modDate != null}" th:text="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}"
+                class="read_td">2024/04/28
+            </td>
+        </tr>
+        <tr th:if="${dto.thumbnail != null}">
+            <td colspan="8">
+                <img th:src="@{'/upload/'+${dto.thumbnail}}" alt="썸네일">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8" class="read_td read_content">[[${dto.content}]]</td>
+        </tr>
+    </table>
+
+    <a sec:authorize="hasRole('ADMIN') || hasRole('SUPERADMIN')"
+       th:href="@{/board/modify(boardNo=${dto.boardNo}, page=${pageRequestDTO.page}, type=${pageRequestDTO.type})}">
+        <button type="button" class="option_button">수정</button>
+    </a>
+    <a sec:authorize="hasRole('ADMIN') || hasRole('SUPERADMIN')" th:href="@{/board/remove(boardNo=${dto.boardNo})}">
+        <button type="button" class="option_button">삭제</button>
+    </a>
+    <a th:href="@{/board/noticeList}">
+        <button type="button" class="option_button">목록</button>
+    </a>
+</div>
+</body>
+</html>

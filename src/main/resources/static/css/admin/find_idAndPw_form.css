@@ -1,0 +1,81 @@
+#full_body {
+    background-image: url(../../image/account_bg.png);
+    background-repeat: no-repeat;
+    background-position: 0 1px;
+}
+
+#find_container {
+    width: 500px;
+    height: 700px;
+    border: 1px solid #fc9f27;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+    font-size: 10pt;
+}
+#find_container h3 {
+    margin: 20px auto;
+}
+#find_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.side_logo {
+    margin: 20px 20px 40px 20px;
+    /*border: #d08321 1px solid;*/
+}
+
+form {
+    margin: 40px auto;
+    width: 350px;
+    list-style-type: none;
+    text-align: left;
+}
+
+form hr {
+    /* background: #a2c4f3; */
+    background-color: #fc9f27;
+    height: 1px;
+    border: 0;
+}
+
+.form_list {
+    border: 1px solid #fc9f27;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.form_list input {
+    border: none;
+    background-color: #fff;
+    padding: 10px;
+    width: 300px;
+    height: 40px;
+}
+
+.form_list select {
+    border: none;
+    padding: 10px;
+    width: 300px;
+    height: 40px;
+}
+.form_item {
+    margin: 5px;
+    padding: 5px;
+}
+
+.find_button {
+    background-color: #fc9f27;
+    width: 300px;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+    padding: 10px;
+    margin-left: 25px;
+}
+
+.account_links {
+    margin-top: 20px;
+}
