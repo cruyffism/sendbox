@@ -33,7 +33,7 @@ public class UserLoginController {
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
 
-        return "/user/member/login_form";
+        return "user/member/login_form";
     }
 
     @GetMapping("/reset_password_form")
@@ -65,7 +65,7 @@ public class UserLoginController {
 
     @GetMapping("/forgot_id")
     public String showForgotIdForm() {
-        return "/user/member/forgot_id_form";
+        return "user/member/forgot_id_form";
     }
 
     @PostMapping("/forgot_id")

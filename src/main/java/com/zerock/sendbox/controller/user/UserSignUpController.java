@@ -27,10 +27,10 @@ public class UserSignUpController {
     public String createUserMember() {
         log.info("sign.......");
 
-        return "/user/member/create_account_form";
+        return "user/member/create_account_form";
     }
 
-    @PostMapping("create_account_form")
+    @PostMapping("/create_account_form")
     public String createUserMember(UserSignUpDTO userSignUpDTO, MemberRole memberRole, HttpServletResponse response) throws IOException {
         if(userSignUpService.isIdDuplicated(userSignUpDTO.getUserId())) {
             response.setContentType("text/html; charset=UTF-8");

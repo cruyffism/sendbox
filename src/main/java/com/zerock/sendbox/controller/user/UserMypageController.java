@@ -117,7 +117,7 @@ public class UserMypageController {
         model.addAttribute("orderInfo", orders);
         model.addAttribute("paymentInfo", orders.getPayment());
 
-        return "/user/member/paymentConfirm";
+        return "user/member/paymentConfirm";
     }
 
 

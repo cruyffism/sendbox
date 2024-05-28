@@ -23,7 +23,7 @@ public class RoomController {
         if (room != null) {
             model.addAttribute("room", room);
             model.addAttribute("store", room.getStore());
-            return "room_detail";
+            return "store/store_detail";
         } else {
             return "error"; // 에러 페이지로 리다이렉트 또는 에러 메시지를 표시할 수 있습니다.
         }

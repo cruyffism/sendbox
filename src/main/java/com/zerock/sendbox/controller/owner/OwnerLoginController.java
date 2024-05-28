@@ -32,7 +32,7 @@ public class OwnerLoginController {
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
 
-        return "/owner/member/login_form";
+        return "owner/member/login_form";
     }
 
     @GetMapping("/reset_password_form")

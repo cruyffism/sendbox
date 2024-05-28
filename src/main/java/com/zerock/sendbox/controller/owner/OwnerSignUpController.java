@@ -39,7 +39,7 @@ public class OwnerSignUpController {
     public String createOwnerMember() {
         log.info("sign.......");
 
-        return "/owner/member/create_account_form";
+        return "owner/member/create_account_form";
     }
 
     @PostMapping("/create_account_form")

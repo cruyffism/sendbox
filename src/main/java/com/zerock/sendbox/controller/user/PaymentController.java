@@ -133,14 +133,14 @@ public class PaymentController {
         model.addAttribute("orderInfo",orderInfo);
         System.out.println("approveResDto = " + approveResDto);
 
-        return "/user/member/paymentConfirm";
+        return "user/member/paymentConfirm";
     }
 
     //결제 실패
     @GetMapping("/payment/fail")
     public String paymentFail() {
         System.out.println("실패");
-        return "/user/member/paymentConfirm";
+        return "user/member/paymentConfirm";
     }
 
     //결제 취소 api
